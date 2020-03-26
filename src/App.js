@@ -15,6 +15,7 @@ function App() {
   return (
     <Router>
       <div>
+      <h1>Jack Tiger</h1>
         <nav>
           <ul>
             <li>
