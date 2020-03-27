@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <div>
-      <h1 style={{color: "red"}}>Jack Rabbit</h1>
+      <h1 style={{color: "green"}}>Jack Tiger</h1>
         <nav>
           <ul>
             <li>
