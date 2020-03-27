@@ -6,7 +6,6 @@ import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Schools from './Schools';
 import Login from './login';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,7 +17,7 @@ function App() {
   return (
     <Router>
       <div>
-      <h1>Jack Tiger</h1>
+      <h1 style={{color: "red"}}>Jack Rabbit</h1>
         <nav>
           <ul>
             <li>
