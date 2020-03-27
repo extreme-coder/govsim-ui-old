@@ -4,6 +4,7 @@ import './App.css';
 import EditStudent from './EditStudent';
 import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Schools from './Schools';
 
 import {
   BrowserRouter as Router,
@@ -23,7 +24,7 @@ function App() {
               <Link to="/editstudent">Create new student</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/schools">Schools</Link>
             </li>
             <li>
               <Link to="/users">Users</Link>
@@ -34,8 +35,8 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/schools">
+            <Schools />
           </Route>
           <Route path="/users">
             <Users />
@@ -47,12 +48,6 @@ function App() {
       </div>
     </Router>
   );
-}
-
-
-
-function About() {
-  return <h2>About</h2>;
 }
 
 export default App;

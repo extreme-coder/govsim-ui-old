@@ -17,7 +17,7 @@ class Students extends React.Component {
   get columns()
   {
     return [{
-      name: "Name",
+      name: "First Name",
       accessor: "first_name"
     },{
       name: "Last Name",
