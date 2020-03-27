@@ -21,16 +21,16 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/editstudent">Create new student</Link>
+              <Link to="/editstudent" style ={{color: "Black"}}>Create new student</Link>
             </li>
             <li>
-              <Link to="/schools">Schools</Link>
+              <Link to="/schools" style ={{color: "Black"}}>Schools</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/users" style ={{color: "Black"}}>Users</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" style ={{color: "Black"}}>Login</Link>
             </li>
           </ul>
         </nav>
