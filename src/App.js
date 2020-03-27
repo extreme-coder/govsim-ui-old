@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
 import EditStudent from './EditStudent';
 import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import Schools from './Schools';
 import Login from './login';
 import {
@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <div>
-      <h1 style={{color: "red"}}>Jack Rabbit</h1>
+      <h1 style={{color: "black"}}>Jack Tiger</h1>
         <nav>
           <ul>
             <li>
