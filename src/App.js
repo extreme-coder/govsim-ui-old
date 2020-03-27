@@ -5,6 +5,7 @@ import EditStudent from './EditStudent';
 import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Schools from './Schools';
+import Login from './login';
 
 import {
   BrowserRouter as Router,
@@ -29,6 +30,9 @@ function App() {
             <li>
               <Link to="/users">Users</Link>
             </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
           </ul>
         </nav>
 
@@ -43,6 +47,9 @@ function App() {
           </Route>
           <Route path="/editstudent">
             <EditStudent />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
       </div>

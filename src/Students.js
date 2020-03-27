@@ -10,7 +10,13 @@ class Students extends React.Component {
       last_name: "Singh",
       email: "aryan.singh.lamba@gmail.com",
       birth_date: "06/01/10"
-    }
+    },
+    {
+        first_name: "Nirmay",
+        last_name: "Singh",
+        email: "nirmay.singh.lamba@gmail.com",
+        birth_date: "08/03/14"
+      }
         ];
   }
 
