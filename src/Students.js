@@ -3,7 +3,6 @@ import {Form, Button} from 'react-bootstrap';
 import ReactTable from 'reacttable'
 import * as actions from './actions/students';
 import { connect } from 'react-redux';
-import
 
 class Students extends React.Component {
    
