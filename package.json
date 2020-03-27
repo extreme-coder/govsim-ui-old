@@ -6,14 +6,24 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
+<<<<<<< HEAD
+=======
+    "react-redux-loading-bar": "^4.6.0",
+>>>>>>> af29495d0f9facf9ae1646701954ede93a391347
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "reacttable": "^0.2.0"
+    "reacttable": "^0.2.0",
+    "redux": "^4.0.5",
+    "redux-actions": "^2.6.5",
+    "redux-axios-middleware": "^4.0.1",
+    "redux-form": "^8.3.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

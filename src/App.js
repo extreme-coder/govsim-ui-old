@@ -4,7 +4,8 @@ import './App.css';
 import EditStudent from './EditStudent';
 import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Schools from './Schools';
+import Login from './login';
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,17 +17,20 @@ function App() {
   return (
     <Router>
       <div>
-      <h1>Jack Tiger</h1>
+      <h1 style={{color: "red"}}>Jack Rabbit</h1>
         <nav>
           <ul>
             <li>
               <Link to="/editstudent">Create new student</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/schools">Schools</Link>
             </li>
             <li>
               <Link to="/users">Users</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </nav>
@@ -34,8 +38,8 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/schools">
+            <Schools />
           </Route>
           <Route path="/users">
             <Users />
@@ -43,16 +47,13 @@ function App() {
           <Route path="/editstudent">
             <EditStudent />
           </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
         </Switch>
       </div>
     </Router>
   );
-}
-
-
-
-function About() {
-  return <h2>About</h2>;
 }
 
 export default App;

@@ -1,33 +1,26 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import ReactTable from 'reacttable'
+import * as actions from './actions/students';
+import { connect } from 'react-redux';
 
 class Students extends React.Component {
-    get initialData()
-  {
-    return [{
-      first_name: "Aryan",
-      last_name: "Singh",
-      email: "aryan.singh.lamba@gmail.com",
-      birth_date: "06/01/10"
-    }
-        ];
-  }
+   
 
   get columns()
   {
     return [{
-      name: "Name",
-      accessor: "first_name"
+      name: "First Name",
+      accessor: "FirstName"
     },{
       name: "Last Name",
-      accessor: "last_name"
+      accessor: "LastName"
     },{
         name: "Email",
-        accessor: "email"
+        accessor: "Email"
     },{
         name: "Birth Date",
-        accessor: "birth_date"
+        accessor: "DateOfBirth"
     }];
   }
 
@@ -35,16 +28,27 @@ class Students extends React.Component {
   {
     super(props);
     this.state = {};
-    this.state.data = this.initialData;
     this.state.columns = this.columns;
+  }
+
+  componentDidMount() {
+    this.props.getStudents();
   }
 
   render()
   {
     return (
-      <ReactTable data={this.state.data} columns={this.state.columns} />
+      <ReactTable data={this.props.students} columns={this.state.columns} />
     )
   }
 }
 
-export default Students;
+const mapStateToProps = state => {
+  return {
+    ...state.students
+  };
+}
+
+export default connect(
+  mapStateToProps, actions
+)(Students);
