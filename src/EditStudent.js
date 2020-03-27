@@ -1,11 +1,11 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 
-class Home extends React.Component {
+class EditStudent extends React.Component {
     render() {
       return (
         <div>
-             <h1>Create new student</h1>
+             <h3>Create new student</h3>
              <Form>
              <Form.Group controlId="formBasicName">
                     <Form.Label>First name</Form.Label>
@@ -44,4 +44,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default EditStudent;

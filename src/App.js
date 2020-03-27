@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Home from './Add_student';
+import EditStudent from './EditStudent';
+import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
@@ -19,7 +20,7 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Create new student</Link>
+              <Link to="/editstudent">Create new student</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
@@ -39,8 +40,8 @@ function App() {
           <Route path="/users">
             <Users />
           </Route>
-          <Route path="/">
-            <Home />
+          <Route path="/editstudent">
+            <EditStudent />
           </Route>
         </Switch>
       </div>
@@ -52,10 +53,6 @@ function App() {
 
 function About() {
   return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
 
 export default App;
