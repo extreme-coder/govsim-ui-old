@@ -1,27 +1,15 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import ReactTable from 'reacttable'
+import * as actions from './actions/schools';
+import { connect } from 'react-redux';
 
 class Schools extends React.Component {
-    get initialData()
-  {
-    return [{
-      school_name: "Red Tiger",
-      ID: "172254836",
-      street: "RedTiger Street",
-      city: "burnaby",
-      state: "B.C.",
-      country: "Canada",
-      postal_code: "146vh8"
-    }
-        ];
-  }
-
   get columns()
   {
     return [{
       name: "Name",
-      accessor: "school_name"
+      accessor: "Name"
     },{
       name: "ID",
       accessor: "ID"
@@ -47,15 +35,26 @@ class Schools extends React.Component {
   {
     super(props);
     this.state = {};
-    this.state.data = this.initialData;
-    this.state.columns = this.columns;
+    this.state.columns = this.columns; 
+  }
+
+  componentDidMount() {
+    this.props.getSchools();
   }
 
   render()
   {
     return (
-      <ReactTable data={this.state.data} columns={this.state.columns} />
+      <ReactTable data={this.props.schools} columns={this.state.columns} />
     )
   }
 }
-export default Schools;
+const mapStateToProps = state => {
+  return {
+    ...state.schools
+  };
+}
+
+export default connect(
+  mapStateToProps, actions
+)(Schools);
