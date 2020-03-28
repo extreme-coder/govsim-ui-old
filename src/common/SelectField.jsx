@@ -1,5 +1,5 @@
 import React from "react";
-import { FormControl, ControlLabel, FormGroup} from 'react-bootstrap';
+import { FormControl, FormLabel, FormGroup} from 'react-bootstrap';
 
 
 
@@ -10,8 +10,8 @@ class SelectField extends React.Component {
     const { touched, error, warning, valid } = meta
     return(
       <FormGroup validationState={(!valid && touched)?'error':''}>
-        <ControlLabel>{this.props.label}</ControlLabel>
-        <FormControl componentClass="select" {...input}   {...p} onChange={input.onChange}>
+        <FormLabel>{this.props.label}</FormLabel>
+        <FormControl as="select" {...input}   {...p} onChange={input.onChange}>
           {this.props.children}
         </FormControl>
         <FormControl.Feedback/>
