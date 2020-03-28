@@ -4,6 +4,7 @@ import schools from './schools'
 import classes from './classes'
 import {alert} from './alert'
 import {auth} from './auth'
+import teachers from './teachers'
 
 import { reducer as formReducer } from 'redux-form'
 import { loadingBarReducer } from 'react-redux-loading-bar'
@@ -11,6 +12,7 @@ import { loadingBarReducer } from 'react-redux-loading-bar'
 export default combineReducers({
   students,
   schools,
+  teachers,
   classes,
   alert,
   auth,
