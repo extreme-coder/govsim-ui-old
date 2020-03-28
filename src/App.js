@@ -7,6 +7,7 @@ import './App.css';
 import Schools from './Schools';
 import Login from './login';
 import AddTeacher from './AddTeacher';
+import AddClass from './AddClass';
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,6 +37,9 @@ function App() {
             <li>
               <Link to="/addteacher" style ={{color: "Black"}}>Add Teacher</Link>
             </li>
+            <li>
+              <Link to="/addclass" style ={{color: "Black"}}>Add Class</Link>
+            </li>
           </ul>
         </nav>
 
@@ -56,6 +60,9 @@ function App() {
           </Route>
           <Route path="/addteacher">
             <AddTeacher />
+          </Route>
+          <Route path="/addclass">
+            <AddClass />
           </Route>
         </Switch>
       </div>
