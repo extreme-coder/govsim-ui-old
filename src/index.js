@@ -40,7 +40,7 @@ const middlewareConfig = {
       function ({getState, dispatch, getSourceAction}, req) {
         console.log(req); //contains information about request object
         if (localStorage.getItem('user') != null) {
-          req.headers['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('user')).token
+          req.headers['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('user')).jwt
         }
         dispatch(showLoading());
         return req;

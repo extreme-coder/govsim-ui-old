@@ -15,10 +15,16 @@ import {
   Link
 } from "react-router-dom";
 
+
 function App() {
+  let loggedInUser = ''
+  if (localStorage.getItem('user') != null) {
+    loggedInUser = JSON.parse(localStorage.getItem('user')).user.username
+  }
   return (
     <Router>
       <div>
+      <h3>Welcome {loggedInUser} </h3>
       <h1 style={{color: "black"}}>Jack Tiger</h1>
         <nav>
           <ul>
