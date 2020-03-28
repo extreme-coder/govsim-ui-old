@@ -1,47 +1,42 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 
+import { Field, reduxForm } from 'redux-form';
+import TextField from './common/TextField';
+
 class EditStudent extends React.Component {
+    addStudent = (values) => {
+        console.log(values)
+        //TODO: call the action to add student
+    }
+
     render() {
       return (
         <div>
-             <h3>Create new student</h3>
-             <Form>
-                <Form.Group controlId="formBasicName">
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control type="First name" placeholder="Enter first name" />
-                </Form.Group>
+            <h3>Create new student</h3>
+            <form onSubmit={this.props.handleSubmit(this.addStudent)}>
+               <Form.Group controlId="formBasicName">
+                    
+                <Field name="FirstName" component={TextField} label="First name" placeholder="Enter First name" />
 
-                <Form.Group controlId="formBasicLastName">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control type="Last name" placeholder="Enter last name" />
-                </Form.Group>
+                <Field name="LastName" component={TextField} label="Last name" placeholder="Enter Last name" />
 
-                <Form.Group controlId="formBasicDate">
-                    <Form.Label>Date of birth</Form.Label>
-                    <Form.Control type="Date of birth" placeholder="Enter date of birth" />
-                </Form.Group>
+                <Field name="DateOfBirth" component={TextField} label="Date of Birth" placeholder="Enter Date of Birth" />
 
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+                <Field name="email" component={TextField} label="Email" placeholder="Email" />
 
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
+                <Field name="password" component={TextField} label="Password" placeholder="Password" />
+            
                 <Button variant="primary" type="submit">
                     Create
                 </Button>
-            </Form>
+              </Form.Group>
+            </form>
         </div>
 
       );
     }
 }
 
-export default EditStudent;
+
+export default reduxForm({form: 'add_student_form', enableReinitialize: true})(EditStudent);
