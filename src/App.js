@@ -9,6 +9,7 @@ import Classes from './Classes';
 import Login from './login';
 import AddTeacher from './AddTeacher';
 import AddClass from './AddClass';
+import Teachers from './teachers';
 import {
   BrowserRouter as Router,
   Switch,
@@ -47,6 +48,12 @@ function App() {
             <li>
               <Link to="/addclass" style ={{color: "Black"}}>Add Class</Link>
             </li>
+            <li>
+              <Link to="/teachers" style ={{color: "Black"}}>Teachers</Link>
+            </li>
+            <li>
+              <Link to="/classes" style ={{color: "Black"}}>Classes</Link>
+            </li>
           </ul>
         </nav>
 
@@ -73,6 +80,9 @@ function App() {
           </Route>
           <Route path="/addclass">
             <AddClass />
+            </Route>
+          <Route path="/teachers">
+            <Teachers />
           </Route>
         </Switch>
       </div>
