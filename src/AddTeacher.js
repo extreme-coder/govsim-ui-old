@@ -21,4 +21,4 @@ class AddTeacher extends React.Component {
     }
 }
 
-export default EditStudent;
+export default AddTeacher;
