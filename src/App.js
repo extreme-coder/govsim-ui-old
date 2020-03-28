@@ -8,6 +8,7 @@ import Schools from './Schools';
 import Classes from './Classes';
 import Login from './login';
 import AddTeacher from './AddTeacher';
+import AddClass from './AddClass';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,10 +16,16 @@ import {
   Link
 } from "react-router-dom";
 
+
 function App() {
+  let loggedInUser = ''
+  if (localStorage.getItem('user') != null) {
+    loggedInUser = JSON.parse(localStorage.getItem('user')).user.username
+  }
   return (
     <Router>
       <div>
+      <h3>Welcome {loggedInUser} </h3>
       <h1 style={{color: "black"}}>Jack Tiger</h1>
         <nav>
           <ul>
@@ -36,6 +43,9 @@ function App() {
             </li>
             <li>
               <Link to="/addteacher" style ={{color: "Black"}}>Add Teacher</Link>
+            </li>
+            <li>
+              <Link to="/addclass" style ={{color: "Black"}}>Add Class</Link>
             </li>
           </ul>
         </nav>
@@ -60,6 +70,9 @@ function App() {
           </Route>
           <Route path="/addteacher">
             <AddTeacher />
+          </Route>
+          <Route path="/addclass">
+            <AddClass />
           </Route>
         </Switch>
       </div>
