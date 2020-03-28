@@ -1,34 +1,36 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 
+import { Field, reduxForm } from 'redux-form';
+import TextField from './common/TextField';
+
 class Login extends React.Component {
+    addStudent = (values) => {
+        console.log(values)
+        //TODO: call the action to add student
+    }
+
     render() {
       return (
         <div>
-             <h3>Log In</h3>
-             <Form>
-             <Form.Group controlId="formBasicName">
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control type="First name" placeholder="Enter first name" />
-                    </Form.Group>
+            <h3>Log In</h3>
+            <form onSubmit={this.props.handleSubmit(this.addStudent)}>
+               <Form.Group controlId="formBasicName">
+                    
+                <Field name="Name" component={TextField} label="Name" placeholder="Enter Name" />
 
-                    <Form.Group controlId="formBasicLastName">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control type="Last name" placeholder="Enter last name" />
-                    </Form.Group>
-
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
+                <Field name="Password" component={TextField} label="Password" placeholder="Enter Password" />
+            
                 <Button variant="primary" type="submit">
                     Log In
                 </Button>
-            </Form>
+              </Form.Group>
+            </form>
         </div>
 
       );
     }
 }
 
-export default Login;
+
+export default reduxForm({form: 'login_form', enableReinitialize: true})(Login);
