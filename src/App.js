@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Schools from './Schools';
 import Login from './login';
+import AddTeacher from './AddTeacher';
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,6 +33,9 @@ function App() {
             <li>
               <Link to="/login" style ={{color: "Black"}}>Login</Link>
             </li>
+            <li>
+              <Link to="/addteacher" style ={{color: "Black"}}>Add Teacher</Link>
+            </li>
           </ul>
         </nav>
 
@@ -49,6 +53,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/addteacher">
+            <AddTeacher />
           </Route>
         </Switch>
       </div>
