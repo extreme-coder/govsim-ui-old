@@ -1,13 +1,15 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
-
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
+import * as actions from './actions/students';
 
 class EditStudent extends React.Component {
     addStudent = (values) => {
+        debugger;
         console.log(values)
-        //TODO: call the action to add student
+        this.props.addStudent(values)
     }
 
     render() {
@@ -38,5 +40,8 @@ class EditStudent extends React.Component {
     }
 }
 
+EditStudent = connect(
+  null, actions
+)(EditStudent);
 
 export default reduxForm({form: 'add_student_form', enableReinitialize: true})(EditStudent);

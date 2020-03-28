@@ -6,3 +6,17 @@ export const getStudents = createAction('LOAD_STUDENTS', () => ({
     }
   })
 );
+
+export const addStudent = createAction('ADD_STUDENT', (student) => ({
+  request: {
+    url: '/students',
+    method: 'POST',
+    data: student
+  },
+  options: {
+    onSuccess({ getState, dispatch, response }) {        
+      window.location = '/users';
+    }
+  }
+})
+);
