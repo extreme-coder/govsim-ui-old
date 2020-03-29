@@ -14,7 +14,13 @@ class Teachers extends React.Component {
       accessor: "Name"
     },{
       name: "Classes",
-      accessor: "Classes"
+      accessor: function(row)
+      {
+        let classNames =row.classes.map((cl) => {
+          return cl.id;
+        })
+        return classNames.join(', ')
+      }
     }];
   }
 
