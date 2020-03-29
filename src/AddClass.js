@@ -1,5 +1,6 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
+import renderDatePicker from "./common/RenderDatePicker";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
@@ -36,9 +37,9 @@ class AddClass extends React.Component {
 
                 <Field name="Endtime" component={TextField} label="End Time" placeholder="Enter End Time" />
 
-                <Field name="StartDate" component={TextField} label="Start Date" placeholder="Enter Start Date" />
+                <Field name="StartDate" component={renderDatePicker} label="Start Date" placeholder="Enter Start Date" />
 
-                <Field name="EndDate" component={TextField} label="End Date" placeholder="Enter End Date" />
+                <Field name="EndDate" component={renderDatePicker} label="End Date" placeholder="Enter End Date" />
 
                 <Field name="Teacher" component={SelectField} label="Teacher" placeholder="Teacher" >
                   <option></option>
