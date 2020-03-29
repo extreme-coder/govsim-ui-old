@@ -1,6 +1,5 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap';
-import ReactTable from 'reacttable'
+import DataTable from './common/DataTable'
 import * as actions from './actions/teachers';
 import { connect } from 'react-redux';
 
@@ -13,6 +12,7 @@ class Teachers extends React.Component {
       name: "Name",
       accessor: "name"
     },{
+      id: "classes",
       name: "Classes",
       accessor: function(row)
       {
@@ -38,7 +38,7 @@ class Teachers extends React.Component {
   render()
   {
     return (
-      <ReactTable data={this.props.teachers} columns={this.state.columns} />
+      <DataTable data={this.props.teachers} columns={this.state.columns} />
     )
   }
 }

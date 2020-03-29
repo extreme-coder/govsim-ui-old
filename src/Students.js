@@ -1,6 +1,5 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap';
-import ReactTable from 'reacttable'
+import DataTable from './common/DataTable'
 import * as actions from './actions/students';
 import { connect } from 'react-redux';
 
@@ -38,7 +37,7 @@ class Students extends React.Component {
   render()
   {
     return (
-      <ReactTable data={this.props.students} columns={this.state.columns} />
+      <DataTable data={this.props.students} columns={this.state.columns} />
     )
   }
 }
