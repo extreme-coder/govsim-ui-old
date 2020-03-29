@@ -1,5 +1,6 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
+import renderDatePicker from "./common/RenderDatePicker";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
@@ -23,7 +24,7 @@ class EditStudent extends React.Component {
 
                 <Field name="LastName" component={TextField} label="Last name" placeholder="Enter Last name" />
 
-                <Field name="DateOfBirth" component={TextField} label="Date of Birth" placeholder="Enter Date of Birth" />
+                <Field name="DateOfBirth" component={renderDatePicker} label="Date of Birth" placeholder="Enter Date of Birth" />
 
                 <Field name="email" component={TextField} label="Email" placeholder="Email" />
 
