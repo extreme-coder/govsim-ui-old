@@ -18,7 +18,7 @@ class SchoolSignUp extends React.Component {
             <form onSubmit={this.props.handleSubmit(this.schoolSignUp)}>
                <Form.Group controlId="formBasicName">
                     
-                <Field name="Name" component={TextField} label="Name Of School" placeholder="Enter Name" />
+                <Field name="name" component={TextField} label="Name Of School" placeholder="Enter Name" />
                 <Field name="address.street" component={TextField} label="Street" placeholder="Enter Street" />
                 <Field name="address.city" component={TextField} label="City" placeholder="Enter City" />
                 <Field name="address.state" component={TextField} label="State" placeholder="Enter State" />

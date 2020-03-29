@@ -18,7 +18,7 @@ class AddTeacher extends React.Component {
             <form onSubmit={this.props.handleSubmit(this.addTeacher)}>
                <Form.Group controlId="formBasicName">
                     
-                <Field name="Name" component={TextField} label="Name" placeholder="Enter Name" />
+                <Field name="name" component={TextField} label="Name" placeholder="Enter Name" />
             
                 <Button variant="primary" type="submit">
                     Add

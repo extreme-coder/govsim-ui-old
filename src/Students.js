@@ -11,16 +11,16 @@ class Students extends React.Component {
   {
     return [{
       name: "First Name",
-      accessor: "FirstName"
+      accessor: "first_name"
     },{
       name: "Last Name",
-      accessor: "LastName"
+      accessor: "last_name"
     },{
         name: "Email",
-        accessor: "Email"
+        accessor: "email"
     },{
         name: "Birth Date",
-        accessor: "DateOfBirth"
+        accessor: "date_of_birth"
     }];
   }
 

@@ -31,24 +31,24 @@ class AddClass extends React.Component {
             <form onSubmit={this.props.handleSubmit(this.addClass)}>
               <Form.Group controlId="formBasicName">
                     
-                <Field name="Name" component={TextField} label="Name" placeholder="Enter Name" />
+                <Field name="name" component={TextField} label="Name" placeholder="Enter Name" />
 
-                <Field name="StartTime" component={TextField} label="StartTime" placeholder="Enter Start Time" />
+                <Field name="start_time" component={TextField} label="StartTime" placeholder="Enter Start Time" />
 
-                <Field name="Endtime" component={TextField} label="End Time" placeholder="Enter End Time" />
+                <Field name="end_time" component={TextField} label="End Time" placeholder="Enter End Time" />
 
-                <Field name="StartDate" component={renderDatePicker} label="Start Date" placeholder="Enter Start Date" />
+                <Field name="start_date" component={renderDatePicker} label="Start Date" placeholder="Enter Start Date" />
 
-                <Field name="EndDate" component={renderDatePicker} label="End Date" placeholder="Enter End Date" />
+                <Field name="end_date" component={renderDatePicker} label="End Date" placeholder="Enter End Date" />
 
-                <Field name="Teacher" component={SelectField} label="Teacher" placeholder="Teacher" >
+                <Field name="teacher" component={SelectField} label="Teacher" placeholder="Teacher" >
                   <option></option>
                   {this.teacherOptions()}
                 </Field>
 
-                <Field name="RoomForClass" component={TextField} label="Room" placeholder="Enter Room" />
+                <Field name="room_for_class" component={TextField} label="Room" placeholder="Enter Room" />
 
-                <Field name="DaysOfClass" component={TextField} label="Days Of Class" placeholder="Enter Days" />
+                <Field name="days_of_class" component={TextField} label="Days Of Class" placeholder="Enter Days" />
             
                 <Button variant="primary" type="submit">
                     Add

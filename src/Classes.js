@@ -9,25 +9,25 @@ class Classes extends React.Component {
   {
     return [{
         name: "Start Time",
-        accessor: "StartTime"
+        accessor: "start_time"
     },{
         name: "End Time",
-        accessor: "Endtime"
+        accessor: "end_time"
     },{
         name: "Start Date",
-        accessor: "StartDate"
+        accessor: "start_date"
     },{
         name: "End Date",
-        accessor: "EndDate"
+        accessor: "end_date"
     },{
         name: "Room",
-        accessor: "RoomForClass"
+        accessor: "room_for_class"
     },{
         name: "Teacher",
-        accessor: "Teacher"
+        accessor: "teacher"
     },{
         name: "Class Days",
-        accessor: "DaysOfClass"
+        accessor: "days_of_class"
     },];
   }
 

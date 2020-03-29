@@ -11,7 +11,7 @@ class Teachers extends React.Component {
   {
     return [{
       name: "Name",
-      accessor: "Name"
+      accessor: "name"
     },{
       name: "Classes",
       accessor: function(row)

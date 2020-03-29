@@ -20,11 +20,11 @@ class EditStudent extends React.Component {
             <form onSubmit={this.props.handleSubmit(this.addStudent)}>
                <Form.Group controlId="formBasicName">
                     
-                <Field name="FirstName" component={TextField} label="First name" placeholder="Enter First name" />
+                <Field name="first_name" component={TextField} label="First name" placeholder="Enter First name" />
 
-                <Field name="LastName" component={TextField} label="Last name" placeholder="Enter Last name" />
+                <Field name="last_name" component={TextField} label="Last name" placeholder="Enter Last name" />
 
-                <Field name="DateOfBirth" component={renderDatePicker} label="Date of Birth" placeholder="Enter Date of Birth" />
+                <Field name="date_of_birth" component={renderDatePicker} label="Date of Birth" placeholder="Enter Date of Birth" />
 
                 <Field name="email" component={TextField} label="Email" placeholder="Email" />
 
