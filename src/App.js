@@ -4,12 +4,12 @@ import EditStudent from './EditStudent';
 import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Schools from './Schools';
 import Classes from './Classes';
 import Login from './login';
 import AddTeacher from './AddTeacher';
 import AddClass from './AddClass';
 import Teachers from './teachers';
+import SchoolSignUp from './SchoolSignUp';
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,15 +26,12 @@ function App() {
   return (
     <Router>
       <div>
-      <h3>Welcome {loggedInUser} </h3>
       <h1 style={{color: "black"}}>Jack Tiger</h1>
+      <h3>Welcome {loggedInUser} </h3>
         <nav>
           <ul>
             <li>
               <Link to="/editstudent" style ={{color: "Black"}}>Create new student</Link>
-            </li>
-            <li>
-              <Link to="/schools" style ={{color: "Black"}}>Schools</Link>
             </li>
             <li>
               <Link to="/users" style ={{color: "Black"}}>Users</Link>
@@ -54,15 +51,15 @@ function App() {
             <li>
               <Link to="/classes" style ={{color: "Black"}}>Classes</Link>
             </li>
+            <li>
+              <Link to="/schoolsignup" style ={{color: "Black"}}>Sign Up As School</Link>
+            </li>
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/schools">
-            <Schools />
-          </Route>
           <Route path="/classes">
             <Classes />
           </Route>
@@ -83,6 +80,9 @@ function App() {
             </Route>
           <Route path="/teachers">
             <Teachers />
+          </Route>
+          <Route path="/schoolsignup">
+            <SchoolSignUp />
           </Route>
         </Switch>
       </div>

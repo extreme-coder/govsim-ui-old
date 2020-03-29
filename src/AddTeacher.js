@@ -19,8 +19,6 @@ class AddTeacher extends React.Component {
                <Form.Group controlId="formBasicName">
                     
                 <Field name="Name" component={TextField} label="Name" placeholder="Enter Name" />
-
-                <Field name="Classes" component={TextField} label="Classes" placeholder="Enter Classes" />
             
                 <Button variant="primary" type="submit">
                     Add
