@@ -4,11 +4,28 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
 import * as actions from './actions/schools';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 class SchoolSignUp extends React.Component {
     schoolSignUp = (values) => {
         console.log(values)
+        values.address.country = this.state.country
+        values.address.state = this.state.region
         this.props.addSchool(values)
+    }
+
+    selectCountry (val) {
+      this.setState({ country: val });
+    }
+
+    
+  selectRegion (val) {
+    this.setState({ region: val });
+  }
+
+    constructor(props) {
+        super(props)
+        this.state = {}
     }
 
     render() {
@@ -20,9 +37,16 @@ class SchoolSignUp extends React.Component {
                     
                 <Field name="name" component={TextField} label="Name Of School" placeholder="Enter Name" />
                 <Field name="address.street" component={TextField} label="Street" placeholder="Enter Street" />
+                <h6>Country</h6>
+                <CountryDropdown
+                value={this.state.country}
+                onChange={(val) => this.selectCountry(val)} />
+                <h6>State</h6>
+                <RegionDropdown
+                country={this.state.country}
+                value={this.state.region}
+                onChange={(val) => this.selectRegion(val)} />
                 <Field name="address.city" component={TextField} label="City" placeholder="Enter City" />
-                <Field name="address.state" component={TextField} label="State" placeholder="Enter State" />
-                <Field name="address.country" component={TextField} label="Country" placeholder="Enter Country" />
                 <Field name="address.postal_code" component={TextField} label="Postal Code" placeholder="Enter Postal Code" />
             
                 <Button variant="primary" type="submit">
