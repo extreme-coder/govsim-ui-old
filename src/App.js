@@ -9,6 +9,7 @@ import Rooms from './Rooms';
 import Login from './login';
 import AddTeacher from './AddTeacher';
 import AddClass from './AddClass';
+import AddRoom from './AddRoom';
 import Teachers from './teachers';
 import SchoolSignUp from './SchoolSignUp';
 import {
@@ -81,7 +82,10 @@ function App() {
           </Route>
           <Route path="/addclass">
             <AddClass />
-            </Route>
+          </Route>
+          <Route path="/addroom">
+            <AddRoom />
+          </Route>
           <Route path="/teachers">
             <Teachers />
           </Route>
