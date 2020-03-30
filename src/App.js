@@ -5,9 +5,11 @@ import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Classes from './Classes';
+import Rooms from './Rooms';
 import Login from './login';
 import AddTeacher from './AddTeacher';
 import AddClass from './AddClass';
+import AddRoom from './AddRoom';
 import Teachers from './teachers';
 import SchoolSignUp from './SchoolSignUp';
 import {
@@ -63,6 +65,9 @@ function App() {
           <Route path="/classes">
             <Classes />
           </Route>
+          <Route path="/rooms">
+            <Rooms />
+          </Route>
           <Route path="/users">
             <Users />
           </Route>
@@ -77,7 +82,10 @@ function App() {
           </Route>
           <Route path="/addclass">
             <AddClass />
-            </Route>
+          </Route>
+          <Route path="/addroom">
+            <AddRoom />
+          </Route>
           <Route path="/teachers">
             <Teachers />
           </Route>
