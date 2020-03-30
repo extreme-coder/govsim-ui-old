@@ -12,6 +12,7 @@ import AddClass from './AddClass';
 import AddRoom from './AddRoom';
 import Teachers from './teachers';
 import SchoolSignUp from './SchoolSignUp';
+import SignupPage from './pages/SignupPage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -62,6 +63,9 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/signup">
+            <SignupPage />
+          </Route>
           <Route path="/classes">
             <Classes />
           </Route>
