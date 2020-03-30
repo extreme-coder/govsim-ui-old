@@ -7,6 +7,7 @@ import TextField from './common/TextField';
 import SelectField from './common/SelectField';
 import * as classActions from './actions/classes';
 import * as teacherActions from './actions/teachers';
+import * as roomActions from './actions/rooms';
 
 class AddClass extends React.Component {
     addClass = (values) => {
@@ -16,11 +17,18 @@ class AddClass extends React.Component {
 
     componentDidMount() {
       this.props.getTeachers();
+      this.props.getRooms();
     }
 
     teacherOptions() {
       return this.props.teachers.map((teacher) => {
-        return <option key={teacher.id} value={teacher.id}>{teacher.Name}</option>
+        return <option key={teacher.id} value={teacher.id}>{teacher.name}</option>
+      })
+    }
+
+    roomOptions() {
+      return this.props.rooms.map((room) => {
+        return <option key={room.id} value={room.id}>{room.name}</option>
       })
     }
 
@@ -46,7 +54,10 @@ class AddClass extends React.Component {
                   {this.teacherOptions()}
                 </Field>
 
-                <Field name="room_for_class" component={TextField} label="Room" placeholder="Enter Room" />
+                <Field name="room_for_class" component={SelectField} label="Room" placeholder="Room" >
+                  <option></option>
+                  {this.roomOptions()}
+                </Field>
 
                 <Field name="days_of_class" component={TextField} label="Days Of Class" placeholder="Enter Days" />
             
@@ -63,12 +74,13 @@ class AddClass extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    ...state.teachers
+    ...state.teachers,
+    ...state.rooms
   };
 }
 
 AddClass = connect(
-  mapStateToProps, {...classActions,...teacherActions}
+  mapStateToProps, {...classActions,...teacherActions, ...roomActions}
 )(AddClass);
 
 export default reduxForm({form: 'add_class_form', enableReinitialize: true})(AddClass);
