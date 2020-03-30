@@ -5,6 +5,7 @@ import Users from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Classes from './Classes';
+import Rooms from './Rooms';
 import Login from './login';
 import AddTeacher from './AddTeacher';
 import AddClass from './AddClass';
@@ -62,6 +63,9 @@ function App() {
         <Switch>
           <Route path="/classes">
             <Classes />
+          </Route>
+          <Route path="/rooms">
+            <Rooms />
           </Route>
           <Route path="/users">
             <Users />
