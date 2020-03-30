@@ -34,7 +34,7 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/schoolsignup" style ={{color: "Black"}}>Sign Up</Link>
+              <Link to="/signup" style ={{color: "Black"}}>Sign Up</Link>
             </li>
             <li>
               <Link to="/login" style ={{color: "Black"}}>Login</Link>

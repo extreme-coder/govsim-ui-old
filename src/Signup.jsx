@@ -25,7 +25,7 @@ class Signup extends React.Component {
                 <Field name="password" component={TextField} label="Password" placeholder="Password" />
             
                 <Button variant="primary" type="submit">
-                    Create
+                    Sign Up
                 </Button>
               </Form.Group>
             </form>

@@ -48,8 +48,6 @@ class SchoolSignUp extends React.Component {
                 onChange={(val) => this.selectRegion(val)} />
                 <Field name="address.city" component={TextField} label="City" placeholder="Enter City" />
                 <Field name="address.postal_code" component={TextField} label="Postal Code" placeholder="Enter Postal Code" />
-                <Field name="email" component={TextField} label="Email" placeholder="Enter Email" />
-                <Field name="password" component={TextField} label="Password" placeholder="Enter Password" />
             
                 <Button variant="primary" type="submit">
                     Sign Up
