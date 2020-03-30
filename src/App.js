@@ -31,13 +31,13 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/editstudent" style ={{color: "Black"}}>Create new student</Link>
-            </li>
-            <li>
-              <Link to="/users" style ={{color: "Black"}}>Users</Link>
+              <Link to="/schoolsignup" style ={{color: "Black"}}>Sign Up</Link>
             </li>
             <li>
               <Link to="/login" style ={{color: "Black"}}>Login</Link>
+            </li>
+            <li>
+              <Link to="/editstudent" style ={{color: "Black"}}>Add Student</Link>
             </li>
             <li>
               <Link to="/addteacher" style ={{color: "Black"}}>Add Teacher</Link>
@@ -46,13 +46,13 @@ function App() {
               <Link to="/addclass" style ={{color: "Black"}}>Add Class</Link>
             </li>
             <li>
+              <Link to="/users" style ={{color: "Black"}}>Students</Link>
+            </li>
+            <li>
               <Link to="/teachers" style ={{color: "Black"}}>Teachers</Link>
             </li>
             <li>
               <Link to="/classes" style ={{color: "Black"}}>Classes</Link>
-            </li>
-            <li>
-              <Link to="/schoolsignup" style ={{color: "Black"}}>Sign Up As School</Link>
             </li>
           </ul>
         </nav>
