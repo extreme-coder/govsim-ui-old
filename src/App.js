@@ -43,7 +43,7 @@ function App() {
               <Link to="/editstudent" style ={{color: "Black"}}>Add Student</Link>
             </li>
             <li>
-              <Link to="/addteacher" style ={{color: "Black"}}>Add Teacher</Link>
+              <Link to="/teachers/new" style ={{color: "Black"}}>Add Teacher</Link>
             </li>
             <li>
               <Link to="/addclass" style ={{color: "Black"}}>Add Class</Link>
@@ -81,18 +81,21 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/addteacher">
-            <AddTeacher />
-          </Route>
+
+                              
+
           <Route path="/addclass">
             <AddClass />
           </Route>
           <Route path="/addroom">
             <AddRoom />
           </Route>
-          <Route path="/teachers">
-            <Teachers />
-          </Route>
+
+          <Route path="/teachers/:id" component={AddTeacher}/>
+          <Route path="/teachers/new" component={AddTeacher}/>    
+          <Route path="/teachers" component={Teachers} />
+            
+            
           <Route path="/schoolsignup">
             <SchoolSignUp />
           </Route>
