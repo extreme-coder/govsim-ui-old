@@ -7,6 +7,13 @@ export const getStudents = createAction('LOAD_STUDENTS', () => ({
   })
 );
 
+export const getStudent = createAction('LOAD_STUDENT', (id) => ({
+  request: {
+    url: '/students/' + id
+  }
+})
+);
+
 export const addStudent = createAction('ADD_STUDENT', (student) => ({
   request: {
     url: '/students',
@@ -15,7 +22,21 @@ export const addStudent = createAction('ADD_STUDENT', (student) => ({
   },
   options: {
     onSuccess({ getState, dispatch, response }) {        
-      window.location = '/users';
+      window.location = '/students';
+    }
+  }
+})
+);
+
+export const updateStudent = createAction('UPDATE_STUDENT', (student) => ({
+  request: {
+    url: '/students/' + student.id,
+    method: 'PUT',
+    data: student
+  },
+  options: {
+    onSuccess({ getState, dispatch, response }) {        
+      window.location = '/students';
     }
   }
 })

@@ -2,7 +2,7 @@ import React from 'react';
 import DataTable from './common/DataTable'
 import * as actions from './actions/students';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 class Students extends React.Component {
    
@@ -25,7 +25,7 @@ class Students extends React.Component {
         id: "edit",
         name: "Edit",
         accessor: function(row){
-          let link = "/editstudent/" + row.id
+          let link = "/students/" + row.id
           return <Link to= {link} style ={{color: "Black"}}>Edit</Link>
         }
     }];

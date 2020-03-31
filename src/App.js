@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import EditStudent from './EditStudent';
-import Users from './Students';
+import Students from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Classes from './Classes';
@@ -40,7 +40,7 @@ function App() {
               <Link to="/login" style ={{color: "Black"}}>Login</Link>
             </li>
             <li>
-              <Link to="/editstudent" style ={{color: "Black"}}>Add Student</Link>
+              <Link to="/students/new" style ={{color: "Black"}}>Add Student</Link>
             </li>
             <li>
               <Link to="/teachers/new" style ={{color: "Black"}}>Add Teacher</Link>
@@ -49,7 +49,7 @@ function App() {
               <Link to="/addclass" style ={{color: "Black"}}>Add Class</Link>
             </li>
             <li>
-              <Link to="/users" style ={{color: "Black"}}>Students</Link>
+              <Link to="/students" style ={{color: "Black"}}>Students</Link>
             </li>
             <li>
               <Link to="/teachers" style ={{color: "Black"}}>Teachers</Link>
@@ -72,18 +72,9 @@ function App() {
           <Route path="/rooms">
             <Rooms />
           </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/editstudent">
-            <EditStudent />
-          </Route>
           <Route path="/login">
             <Login />
           </Route>
-
-                              
-
           <Route path="/addclass">
             <AddClass />
           </Route>
@@ -95,7 +86,10 @@ function App() {
           <Route path="/teachers/new" component={AddTeacher}/>    
           <Route path="/teachers" component={Teachers} />
             
-            
+          <Route path="/students/:id" component={EditStudent}/>
+          <Route path="/students/new" component={EditStudent}/>    
+          <Route path="/students" component={Students} />
+
           <Route path="/schoolsignup">
             <SchoolSignUp />
           </Route>

@@ -7,17 +7,25 @@ import TextField from './common/TextField';
 import * as actions from './actions/students';
 
 class EditStudent extends React.Component {
-    addStudent = (values) => {
-        debugger;
-        console.log(values)
-        this.props.addStudent(values)
+  saveStudent = (values) => {       
+    if (this.props.match.params.id == 'new') {        
+      this.props.addStudent(values)          
+    } else {
+      this.props.updateStudent(values)
+    }  
+  }
+
+  componentDidMount() {      
+    if (this.props.match.params.id) {
+      this.props.getStudent(this.props.match.params.id);
     }
+  }  
 
     render() {
       return (
         <div>
             <h3>Create new student</h3>
-            <form onSubmit={this.props.handleSubmit(this.addStudent)}>
+            <form onSubmit={this.props.handleSubmit(this.saveStudent)}>
                <Form.Group controlId="formBasicName">
                     
                 <Field name="first_name" component={TextField} label="First name" placeholder="Enter First name" />
@@ -31,7 +39,7 @@ class EditStudent extends React.Component {
                 <Field name="password" component={TextField} label="Password" placeholder="Password" />
             
                 <Button variant="primary" type="submit">
-                    Create
+                    Save
                 </Button>
               </Form.Group>
             </form>
@@ -40,9 +48,14 @@ class EditStudent extends React.Component {
       );
     }
 }
+const mapStateToProps = state => {
+  return {
+    initialValues: state.students.student
+  }
+}
 
-EditStudent = connect(
-  null, actions
+EditStudent = reduxForm({form: 'edit_student_form', enableReinitialize: true})(EditStudent);
+
+export default  connect(
+  mapStateToProps, actions
 )(EditStudent);
-
-export default reduxForm({form: 'add_student_form', enableReinitialize: true})(EditStudent);
