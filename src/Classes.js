@@ -2,7 +2,7 @@ import React from 'react';
 import DataTable from './common/DataTable'
 import * as actions from './actions/classes';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 class Classes extends React.Component {
   get columns()
@@ -32,7 +32,7 @@ class Classes extends React.Component {
       id: "edit",
       name: "Edit",
       accessor: function(row){
-        let link = "/addclass/" + row.id
+        let link = "/classes/" + row.id
         return <Link to= {link} style ={{color: "Black"}}>Edit</Link>
       }
   }];
