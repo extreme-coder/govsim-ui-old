@@ -7,7 +7,7 @@ const teachers = (state = {teachers: []}, action) => {
       default:
         return state;
     }
-  };
+};
   
-  export default teachers;
+export default teachers;
   

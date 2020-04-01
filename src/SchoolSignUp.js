@@ -11,8 +11,19 @@ class SchoolSignUp extends React.Component {
         console.log(values)
         values.address.country = this.state.country
         values.address.state = this.state.region
-        this.props.addSchool(values)
+        if (this.props.match.params.id == 'new') {        
+          this.props.addSchool(values)          
+        } else {
+          this.props.updateSchool(values)
+        }  
     }
+
+    componentDidMount() {      
+      debugger;
+      if (this.props.match.params.id) {
+        this.props.getSchool(this.props.match.params.id);
+      }
+    }  
 
     selectCountry (val) {
       this.setState({ country: val });
@@ -60,8 +71,14 @@ class SchoolSignUp extends React.Component {
     }
 }
 
-SchoolSignUp = connect(
-  null, actions
-)(SchoolSignUp);
+const mapStateToProps = state => {
+  return {
+    initialValues: state.schools.school
+  }
+}
 
-export default reduxForm({form: 'school_signup_form', enableReinitialize: true})(SchoolSignUp);
+SchoolSignUp = reduxForm({form: 'school_sign_up_form', enableReinitialize: true})(SchoolSignUp);
+
+export default  connect(
+  mapStateToProps, actions
+)(SchoolSignUp);

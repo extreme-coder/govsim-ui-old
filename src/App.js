@@ -90,9 +90,8 @@ function App() {
           <Route path="/students/new" component={EditStudent}/>    
           <Route path="/students" component={Students} />
 
-          <Route path="/schoolsignup">
-            <SchoolSignUp />
-          </Route>
+          <Route path="/schools/:id" component={SchoolSignUp}/>
+          <Route path="/schools/new" component={SchoolSignUp}/>    
         </Switch>
       </div>
     </Router>
