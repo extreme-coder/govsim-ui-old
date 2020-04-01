@@ -9,6 +9,7 @@ import * as classActions from './actions/classes';
 import * as teacherActions from './actions/teachers';
 import * as roomActions from './actions/rooms';
 import actions from 'redux-form/lib/actions';
+import { Formik } from "formik";
 
 class AddClass extends React.Component {
   saveClass = (values) => {      
@@ -43,36 +44,39 @@ class AddClass extends React.Component {
       return (
         <div>
             <h3>Add Class</h3>
-            <form onSubmit ={this.props.handleSubmit(this.saveClass)}>
-              <Form.Group controlId="formBasicName">
-                    
-                <Field name="name" component={TextField} label="Name" placeholder="Enter Name" />
+            <Formik enableReinitialize onSubmit={this.saveClass}  initialValues={this.props.class}>
+          {(props) => (
+            <Form noValidate onSubmit={props.handleSubmit}>            
+                <Form.Group controlId="formBasicName">     
+                <TextField name="name" label="Name" placeholder="Enter Name" />
 
-                <Field name="start_time" component={TextField} label="StartTime" placeholder="Enter Start Time" />
+                <TextField name="start_time" label="StartTime" placeholder="Enter Start Time" />
 
-                <Field name="end_time" component={TextField} label="End Time" placeholder="Enter End Time" />
+                <TextField name="end_time" label="End Time" placeholder="Enter End Time" />
 
-                <Field name="start_date" component={DateField} label="Start Date" placeholder="Enter Start Date" />
+                <DateField name="start_date" label="Start Date" placeholder="Enter Start Date" />
 
-                <Field name="end_date" component={DateField} label="End Date" placeholder="Enter End Date" />
+                <DateField name="end_date" label="End Date" placeholder="Enter End Date" />
 
-                <Field name="teacher" component={SelectField} label="Teacher" placeholder="Teacher" >
+                <SelectField name="teacher" label="Teacher" placeholder="Teacher" >
                   <option></option>
                   {this.teacherOptions()}
-                </Field>
+                </SelectField>
 
-                <Field name="room_for_class" component={SelectField} label="Room" placeholder="Room" >
+                <SelectField name="room_for_class" label="Room" placeholder="Room" >
                   <option></option>
                   {this.roomOptions()}
-                </Field>
+                </SelectField>
 
-                <Field name="days_of_class" component={TextField} label="Days Of Class" placeholder="Enter Days" />
+                <TextField name="days_of_class" label="Days Of Class" placeholder="Enter Days" />
             
                 <Button variant="primary" type="submit">
                     Save
                 </Button>
               </Form.Group>
-            </form>
+              </Form> 
+          )}
+            </Formik>
         </div>
 
       );
@@ -81,13 +85,11 @@ class AddClass extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    initialValues: state.classes.class,
+    class: state.classes.class,
     ...state.teachers,
     ...state.rooms
   }
 }
-
-AddClass = reduxForm({form: 'add_class_form', enableReinitialize: true})(AddClass);
 
 export default  connect(
   mapStateToProps, {...classActions,...teacherActions, ...roomActions}
