@@ -2,9 +2,9 @@ import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import DateField from "./common/DateField";
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
 import * as actions from './actions/students';
+import { Formik } from "formik";
 
 class EditStudent extends React.Component {
   saveStudent = (values) => {       
@@ -25,24 +25,28 @@ class EditStudent extends React.Component {
       return (
         <div>
             <h3>Create new student</h3>
-            <form onSubmit={this.props.handleSubmit(this.saveStudent)}>
+            <Formik enableReinitialize onSubmit={this.saveStudent}  initialValues={this.props.student}>
+          {(props) => (
+            <Form noValidate onSubmit={props.handleSubmit}>           
                <Form.Group controlId="formBasicName">
                     
-                <Field name="first_name" component={TextField} label="First name" placeholder="Enter First name" />
+                <TextField name="first_name"  label="First name" placeholder="Enter First name" />
 
-                <Field name="last_name" component={TextField} label="Last name" placeholder="Enter Last name" />
+                <TextField name="last_name" label="Last name" placeholder="Enter Last name" />
 
-                <Field name="date_of_birth" component={DateField} label="Date of Birth" placeholder="Enter Date of Birth" />
+                <DateField name="date_of_birth"  label="Date of Birth" placeholder="Enter Date of Birth" />
 
-                <Field name="email" component={TextField} label="Email" placeholder="Email" />
+                <TextField name="email"  label="Email" placeholder="Email" />
 
-                <Field name="password" component={TextField} label="Password" placeholder="Password" />
+                <TextField name="password"  label="Password" placeholder="Password" />
             
                 <Button variant="primary" type="submit">
                     Save
                 </Button>
               </Form.Group>
-            </form>
+              </Form> 
+          )}
+            </Formik>
         </div>
 
       );
@@ -50,11 +54,9 @@ class EditStudent extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    initialValues: state.students.student
+    student: state.students.student
   }
 }
-
-EditStudent = reduxForm({form: 'edit_student_form', enableReinitialize: true})(EditStudent);
 
 export default  connect(
   mapStateToProps, actions

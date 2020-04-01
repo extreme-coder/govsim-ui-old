@@ -49,6 +49,9 @@ function App() {
               <Link to="/classes/new" style ={{color: "Black"}}>Add Class</Link>
             </li>
             <li>
+              <Link to="/addroom" style ={{color: "Black"}}>Add Room</Link>
+            </li>
+            <li>
               <Link to="/students" style ={{color: "Black"}}>Students</Link>
             </li>
             <li>
@@ -56,6 +59,9 @@ function App() {
             </li>
             <li>
               <Link to="/classes" style ={{color: "Black"}}>Classes</Link>
+            </li>
+            <li>
+              <Link to="/rooms" style ={{color: "Black"}}>Rooms</Link>
             </li>
           </ul>
         </nav>
