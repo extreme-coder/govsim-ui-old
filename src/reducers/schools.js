@@ -1,4 +1,4 @@
-const schools = (state = {schools: []}, action) => { 
+const schools = (state = {schools: [], room:{}}, action) => { 
     switch (action.type) {
       case 'LOAD_SCHOOLS_SUCCESS':
         return {...state , schools: action.payload.data}

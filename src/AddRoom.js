@@ -1,10 +1,10 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Formik } from "formik";
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
-import * as roomActions from './actions/rooms';
+import * as actions from './actions/rooms';
 
 class AddRoom extends React.Component {
     addRoom = (values) => {
@@ -16,23 +16,32 @@ class AddRoom extends React.Component {
       return (
         <div>
             <h3>Add Room</h3>
-            <form onSubmit={this.props.handleSubmit(this.addRoom)}>
-               <Form.Group controlId="formBasicName">
+            <Formik enableReinitialize onSubmit={this.addRoom}  initialValues={this.props.room}>
+        {(props) => (
+          <Form noValidate onSubmit={props.handleSubmit}>            
+            <Form.Group controlId="formBasicName">
                     
-                <Field name="name" component={TextField} label="Name" placeholder="Enter Name" />
-            
-                <Button variant="primary" type="submit">
-                    Add
-                </Button>
-              </Form.Group>
-            </form>
+                    <TextField name="name" label="Name" placeholder="Enter Name" />
+                
+                    <Button variant="primary" type="submit">
+                        Add
+                    </Button>
+                  </Form.Group>
+          </Form> 
+        )}
+        </Formik>
         </div>
+
       );
     }
 }
 
-AddRoom = connect(
-  null, roomActions
-)(AddRoom);
+const mapStateToProps = state => {
+  return {
+    room: state.rooms.room
+  }
+}
 
-export default reduxForm({form: 'add_room_form', enableReinitialize: true})(AddRoom);
+export default connect(
+  mapStateToProps, actions
+)(AddRoom);

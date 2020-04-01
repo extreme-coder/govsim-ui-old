@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Formik } from "formik";
 import TextField from './common/TextField';
 import * as actions from './actions/schools';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
@@ -42,30 +42,33 @@ class SchoolSignUp extends React.Component {
     render() {
       return (
         <div>
-            <h3>Sign Up</h3>
-            <form onSubmit={this.props.handleSubmit(this.schoolSignUp)}>
-               <Form.Group controlId="formBasicName">
-                    
-                <Field name="name" component={TextField} label="Name Of School" placeholder="Enter Name" />
-                <Field name="address.street" component={TextField} label="Street" placeholder="Enter Street" />
-                <h6>Country</h6>
-                <CountryDropdown
+        <h3>Add Teacher</h3>
+        <Formik enableReinitialize onSubmit={this.schoolSignUp}  initialValues={this.props.school}>
+        {(props) => (
+          <Form noValidate onSubmit={props.handleSubmit}>            
+            <Form.Group controlId="formBasicName">
+              <TextField name="name" label="Name Of School" placeholder="Enter Name" />
+              <TextField name="address.street"  label="Street" placeholder="Enter Street" />
+              <h6>Country</h6>
+              <CountryDropdown
                 value={this.state.country}
                 onChange={(val) => this.selectCountry(val)} />
-                <h6>State</h6>
-                <RegionDropdown
+              <h6>State</h6>
+              <RegionDropdown
                 country={this.state.country}
                 value={this.state.region}
                 onChange={(val) => this.selectRegion(val)} />
-                <Field name="address.city" component={TextField} label="City" placeholder="Enter City" />
-                <Field name="address.postal_code" component={TextField} label="Postal Code" placeholder="Enter Postal Code" />
-            
-                <Button variant="primary" type="submit">
-                    Sign Up
-                </Button>
-              </Form.Group>
-            </form>
-        </div>
+              <TextField name="address.city" label="City" placeholder="Enter City" />
+              <TextField name="address.postal_code" label="Postal Code" placeholder="Enter Postal Code" />
+                
+              <Button variant="primary" type="submit">
+                Sign Up
+              </Button>
+            </Form.Group> 
+          </Form> 
+        )}
+        </Formik>
+      </div>
 
       );
     }
@@ -73,11 +76,9 @@ class SchoolSignUp extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    initialValues: state.schools.school
+    school: state.schools.school
   }
 }
-
-SchoolSignUp = reduxForm({form: 'school_sign_up_form', enableReinitialize: true})(SchoolSignUp);
 
 export default  connect(
   mapStateToProps, actions
