@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
-import renderDatePicker from "./common/RenderDatePicker";
+import DateField from "./common/DateField";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
@@ -52,9 +52,9 @@ class AddClass extends React.Component {
 
                 <Field name="end_time" component={TextField} label="End Time" placeholder="Enter End Time" />
 
-                <Field name="start_date" component={renderDatePicker} label="Start Date" placeholder="Enter Start Date" />
+                <Field name="start_date" component={DateField} label="Start Date" placeholder="Enter Start Date" />
 
-                <Field name="end_date" component={renderDatePicker} label="End Date" placeholder="Enter End Date" />
+                <Field name="end_date" component={DateField} label="End Date" placeholder="Enter End Date" />
 
                 <Field name="teacher" component={SelectField} label="Teacher" placeholder="Teacher" >
                   <option></option>
