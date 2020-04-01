@@ -8,16 +8,23 @@ import SelectField from './common/SelectField';
 import * as classActions from './actions/classes';
 import * as teacherActions from './actions/teachers';
 import * as roomActions from './actions/rooms';
+import actions from 'redux-form/lib/actions';
 
 class AddClass extends React.Component {
-    addClass = (values) => {
-      console.log(values)
-      this.props.addClass(values)
-    }
+  saveClass = (values) => {      
+    if (this.props.match.params.id == 'new') {        
+      this.props.addClass(values)        
+    } else {
+      this.props.updateClass(values)
+    }  
+  }
 
     componentDidMount() {
       this.props.getTeachers();
       this.props.getRooms();
+      if (this.props.match.params.id) {
+        this.props.getClass(this.props.match.params.id);
+      }
     }
 
     teacherOptions() {
@@ -36,7 +43,7 @@ class AddClass extends React.Component {
       return (
         <div>
             <h3>Add Class</h3>
-            <form onSubmit={this.props.handleSubmit(this.addClass)}>
+            <form onSubmit ={this.props.handleSubmit(this.saveClass)}>
               <Form.Group controlId="formBasicName">
                     
                 <Field name="name" component={TextField} label="Name" placeholder="Enter Name" />
@@ -62,7 +69,7 @@ class AddClass extends React.Component {
                 <Field name="days_of_class" component={TextField} label="Days Of Class" placeholder="Enter Days" />
             
                 <Button variant="primary" type="submit">
-                    Add
+                    Save
                 </Button>
               </Form.Group>
             </form>
@@ -74,13 +81,14 @@ class AddClass extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    initialValues: state.classes.class,
     ...state.teachers,
     ...state.rooms
-  };
+  }
 }
 
-AddClass = connect(
+AddClass = reduxForm({form: 'add_class_form', enableReinitialize: true})(AddClass);
+
+export default  connect(
   mapStateToProps, {...classActions,...teacherActions, ...roomActions}
 )(AddClass);
-
-export default reduxForm({form: 'add_class_form', enableReinitialize: true})(AddClass);
