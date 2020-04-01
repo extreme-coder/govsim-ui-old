@@ -1,6 +1,5 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
-import renderDatePicker from "./common/RenderDatePicker";
 import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues } from 'redux-form';
 import TextField from './common/TextField';

@@ -1,25 +1,52 @@
 import React from "react";
-import { FormControl, FormLabel, FormGroup} from 'react-bootstrap';
+import { Form, InputGroup } from "react-bootstrap";
+import { Field } from "formik";
 
+const TextField = ({
+  as,
+  md,
+  controlId,
+  label,
+  name,
+  type,
+  inputGroupPrepend,
+  placeholder
+}) => {
+  return (
+    <Field
+      name={name}
+      render={({ field, form }) => {
+        const isValid = !form.errors[field.name];
+        const isInvalid = form.touched[field.name] && !isValid;
+        return (
+          <Form.Group as={as} md={md} controlId={controlId}>
+            <Form.Label>{label}</Form.Label>
+            <InputGroup>
+              {inputGroupPrepend}
+              <Form.Control
+                {...field}
+                type={type}
+                placeholder={placeholder}
+                isValid={form.touched[field.name] && isValid}
+                isInvalid={isInvalid}
+                feedback={form.errors[field.name]}
+              />
 
+              <Form.Control.Feedback type="invalid">
+                {form.errors[field.name]}
+              </Form.Control.Feedback>
+            </InputGroup>
+          </Form.Group>
+        );
+      }}
+    />
+  );
+};
 
-class TextField extends React.Component {
+TextField.defaultProps = {
+  type: "text",
+  inputGroupPrepend: null
+};
 
-  render() {
-    const {input, meta, ...p} = this.props;
-    let type = this.props.type;
-    const { touched, error, warning, valid } = meta
-    if (type) type = 'text' 
-    return(
-      <FormGroup validationState={(!valid && touched)?'error':''}>
-        <FormLabel>{this.props.label}</FormLabel>
-        <FormControl {...input} type={type}  {...p} onChange={input.onChange}/>
-        <FormControl.Feedback />
-        {touched &&
-        ((error && <span>{error}</span>) ||
-          (warning && <span>{warning}</span>))}
-      </FormGroup>
-    );
-  }
-}
 export default TextField;
+
