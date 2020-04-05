@@ -3,9 +3,11 @@ import {Form, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
+import RichField from './common/RichField';
 import * as emailActions from './actions/emails';
 import actions from 'redux-form/lib/actions';
 import { Formik } from "formik";
+import 'react-quill/dist/quill.snow.css';
 
 class addEmail extends React.Component {
   saveEmail = (values) => {      
@@ -39,8 +41,7 @@ class addEmail extends React.Component {
             
                 <TextField name="subject" label="Subject" placeholder="Enter Subject" />
 
-                <TextField name="message" label="Message" placeholder="Enter Message" />
-
+                <RichField name="message" label="Message"/>
 
                 <SelectField name="status" label="When To Send" placeholder="When Do You Want To Send It" >
                     <option value="sent">Now</option>
