@@ -26,6 +26,9 @@ class Classes extends React.Component {
         name: "Teacher",
         accessor: "teacher.name"
     },{
+      name: "Assistant",
+      accessor: "assistant.name"
+  },{
         name: "Class Days",
         accessor: "days_of_class"
     },{

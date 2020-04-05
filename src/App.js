@@ -5,10 +5,12 @@ import Students from './Students';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Classes from './Classes';
+import Emails from './emails';
 import Rooms from './Rooms';
 import Login from './login';
 import AddTeacher from './AddTeacher';
 import AddClass from './AddClass';
+import AddEmail from './editEmail';
 import AddRoom from './AddRoom';
 import Teachers from './teachers';
 import SchoolSignUp from './SchoolSignUp';
@@ -52,6 +54,9 @@ function App() {
               <Link to="/addroom" style ={{color: "Black"}}>Add Room</Link>
             </li>
             <li>
+              <Link to="/emails/new" style ={{color: "Black"}}>Compose Email</Link>
+            </li>
+            <li>
               <Link to="/students" style ={{color: "Black"}}>Students</Link>
             </li>
             <li>
@@ -62,6 +67,9 @@ function App() {
             </li>
             <li>
               <Link to="/rooms" style ={{color: "Black"}}>Rooms</Link>
+            </li>
+            <li>
+              <Link to="/emails" style ={{color: "Black"}}>Emails</Link>
             </li>
           </ul>
         </nav>
@@ -75,12 +83,14 @@ function App() {
           <Route path="/rooms">
             <Rooms />
           </Route>
+         
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/addroom">
-            <AddRoom />
-          </Route>
+
+          <Route path="/rooms/:id" component={AddRoom}/>
+          <Route path="/rooms/new" component={AddRoom}/>    
+          <Route path="/rooms" component={Rooms} />
 
           <Route path="/teachers/:id" component={AddTeacher}/>
           <Route path="/teachers/new" component={AddTeacher}/>    
@@ -95,6 +105,10 @@ function App() {
           <Route path="/classes/:id" component={AddClass}/>
           <Route path="/classes/new" component={AddClass}/>    
           <Route path="/classes" component={Classes} />
+
+          <Route path="/emails/:id" component={AddEmail}/>
+          <Route path="/emails/new" component={AddEmail}/>    
+          <Route path="/emails" component={Emails} />
 
           <Route path="/schoolsignup">
             <SchoolSignUp />

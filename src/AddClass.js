@@ -63,6 +63,11 @@ class AddClass extends React.Component {
                   {this.teacherOptions()}
                 </SelectField>
 
+                <SelectField name="assistant" label="Assistant" placeholder="Assistant" >
+                  <option></option>
+                  {this.teacherOptions()}
+                </SelectField>
+
                 <SelectField name="room_for_class" label="Room" placeholder="Room" >
                   <option></option>
                   {this.roomOptions()}

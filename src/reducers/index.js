@@ -6,6 +6,7 @@ import rooms from './rooms'
 import {alert} from './alert'
 import {auth} from './auth'
 import teachers from './teachers'
+import emails from './emails'
 
 import { reducer as formReducer } from 'redux-form'
 import { loadingBarReducer } from 'react-redux-loading-bar'
@@ -16,6 +17,7 @@ export default combineReducers({
   teachers,
   rooms,
   classes,
+  emails,
   alert,
   auth,
   form: formReducer,
