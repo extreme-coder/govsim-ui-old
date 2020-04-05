@@ -7,16 +7,24 @@ import SelectField from './common/SelectField';
 import * as actions from './actions/rooms';
 
 class AddRoom extends React.Component {
-    addRoom = (values) => {
-        console.log(values)
-        this.props.addRoom(values)
-    }
+  saveRoom = (values) => {     
+    if (this.props.match.params.id == 'new') {        
+      this.props.addRoom(values)          
+    } else {
+      this.props.updateRoom(values)
+    }        
+  }
 
+  componentDidMount() {      
+    if (this.props.match.params.id!= 'new') {
+      this.props.getRoom(this.props.match.params.id);
+    }
+  }  
     render() {
       return (
         <div>
             <h3>Add Room</h3>
-            <Formik enableReinitialize onSubmit={this.addRoom}  initialValues={this.props.room}>
+            <Formik enableReinitialize onSubmit={this.saveRoom}  initialValues={this.props.room}>
         {(props) => (
           <Form noValidate onSubmit={props.handleSubmit}>            
             <Form.Group controlId="formBasicName">
@@ -24,7 +32,7 @@ class AddRoom extends React.Component {
                     <TextField name="name" label="Name" placeholder="Enter Name" />
                 
                     <Button variant="primary" type="submit">
-                        Add
+                        Save
                     </Button>
                   </Form.Group>
           </Form> 

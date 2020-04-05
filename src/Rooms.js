@@ -3,6 +3,7 @@ import {Form, Button} from 'react-bootstrap';
 import DataTable from './common/DataTable'
 import * as actions from './actions/rooms';
 import { connect } from 'react-redux';
+import {Link} from "react-router-dom";
 
 class Rooms extends React.Component {
    
@@ -12,7 +13,14 @@ class Rooms extends React.Component {
     return [{
       name: "Name",
       accessor: "name"
-    }];
+    },{
+      id: "edit",
+      name: "Edit",
+      accessor: function(row){
+        let link = "/rooms/" + row.id
+        return <Link to= {link} style ={{color: "Black"}}>Edit</Link>
+      }
+  }];
   }
 
   constructor(props)
@@ -28,7 +36,6 @@ class Rooms extends React.Component {
 
   render()
   {
-      debugger;
     return (
       <DataTable data={this.props.rooms} columns={this.state.columns} />
     )

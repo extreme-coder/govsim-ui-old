@@ -51,7 +51,7 @@ function App() {
               <Link to="/classes/new" style ={{color: "Black"}}>Add Class</Link>
             </li>
             <li>
-              <Link to="/addroom" style ={{color: "Black"}}>Add Room</Link>
+              <Link to="/rooms/new" style ={{color: "Black"}}>Add Room</Link>
             </li>
             <li>
               <Link to="/emails/new" style ={{color: "Black"}}>Compose Email</Link>
@@ -79,11 +79,7 @@ function App() {
         <Switch>
           <Route path="/signup">
             <SignupPage />
-          </Route>
-          <Route path="/rooms">
-            <Rooms />
-          </Route>
-         
+          </Route>         
           <Route path="/login">
             <Login />
           </Route>
