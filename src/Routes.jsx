@@ -21,44 +21,47 @@ import {
 
 import EditStudent from './EditStudent';
 import Students from './Students';
+import BasePage from './layout/BasePage'
 
 const Routes = ({ location }) => {
     return (
-        <Switch>    
-          <Route path="/signup">
-            <SignupPage />
-          </Route>
-          
-          <Route path="/login">
-            <Login />
-          </Route>
-
-          <Route path="/rooms/:id" component={AddRoom}/>
-          <Route path="/rooms/new" component={AddRoom}/>    
-          <Route path="/rooms" component={Rooms} />
-
-          <Route path="/teachers/:id" component={AddTeacher}/>
-          <Route path="/teachers/new" component={AddTeacher}/>    
-          <Route path="/teachers" component={Teachers} />
+        <BasePage>
+            <Switch>    
+            <Route path="/signup">
+                <SignupPage />
+            </Route>
             
-          <Route path="/students/:id" component={EditStudent}/>
-          <Route path="/students/new" component={EditStudent}/>    
-          <Route path="/students" component={Students} />
+            <Route path="/login">
+                <Login />
+            </Route>
 
-          <Route path="/schools/:id" component={SchoolSignUp}/>
-          <Route path="/schools/new" component={SchoolSignUp}/>    
-          <Route path="/classes/:id" component={AddClass}/>
-          <Route path="/classes/new" component={AddClass}/>    
-          <Route path="/classes" component={Classes} />
+            <Route path="/rooms/:id" component={AddRoom}/>
+            <Route path="/rooms/new" component={AddRoom}/>    
+            <Route path="/rooms" component={Rooms} />
 
-          <Route path="/emails/:id" component={AddEmail}/>
-          <Route path="/emails/new" component={AddEmail}/>    
-          <Route path="/emails" component={Emails} />
+            <Route path="/teachers/:id" component={AddTeacher}/>
+            <Route path="/teachers/new" component={AddTeacher}/>    
+            <Route path="/teachers" component={Teachers} />
+                
+            <Route path="/students/:id" component={EditStudent}/>
+            <Route path="/students/new" component={EditStudent}/>    
+            <Route path="/students" component={Students} />
 
-          <Route path="/schoolsignup">
-            <SchoolSignUp />
-          </Route>
-        </Switch>
+            <Route path="/schools/:id" component={SchoolSignUp}/>
+            <Route path="/schools/new" component={SchoolSignUp}/>    
+            <Route path="/classes/:id" component={AddClass}/>
+            <Route path="/classes/new" component={AddClass}/>    
+            <Route path="/classes" component={Classes} />
+
+            <Route path="/emails/:id" component={AddEmail}/>
+            <Route path="/emails/new" component={AddEmail}/>    
+            <Route path="/emails" component={Emails} />
+
+            <Route path="/schoolsignup">
+                <SchoolSignUp />
+            </Route>
+            </Switch>
+        </BasePage>
     )
 }
 

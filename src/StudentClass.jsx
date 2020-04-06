@@ -28,8 +28,7 @@ class StudentClass extends React.Component {
             list.push(<SelectField name={"class"+i} label={"Class "+(i+1)+":"} placeholder="Class">
                 <option></option>
                 {this.classOptions()}
-            </SelectField>)
-            debugger;
+            </SelectField>)            
         }
         return list
     }
