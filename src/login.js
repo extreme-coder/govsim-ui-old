@@ -2,6 +2,7 @@ import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
+import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import * as actions from './actions/auth';
 
@@ -16,15 +17,19 @@ class Login extends React.Component {
       return (
         <div>
             <h3>Log In</h3>
-            <form onSubmit={this.props.handleSubmit(this.login)}>
+            <Formik enableReinitialize onSubmit={this.login}  initialValues={{identifier:'', password:''}}>
+              {(props) => (
+              <Form noValidate onSubmit={props.handleSubmit}> 
               <Form.Group controlId="formBasicName">                
-                <Field name="identifier" component={TextField} label="Email" placeholder="Email" />
-                <Field name="password" component={TextField} label="Password" type="password" placeholder="Password" />
+                <TextField name="identifier"  label="Email" placeholder="Email" />
+                <TextField name="password" label="Password" type="password" placeholder="Password" />
                 <Button variant="primary" type="submit">
                     Log In
                 </Button>
               </Form.Group>  
-            </form>
+              </Form>
+              )}
+            </Formik>  
         </div>
 
       );
@@ -32,8 +37,6 @@ class Login extends React.Component {
 }
 
   
-Login = connect(
+export default Login = connect(
     null, actions
 )(Login);
-
-export default reduxForm({form: 'login_form', enableReinitialize: true})(Login);
