@@ -27,6 +27,7 @@ const RichField = ({ ...props }) => {
 
         </InputGroup>
         <p>&nbsp;</p>
+        <p>&nbsp;</p>
       </Form.Group>
 
       
