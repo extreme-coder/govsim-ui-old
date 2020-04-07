@@ -2,7 +2,6 @@ import jQuery from 'jquery';
 
 (function($) {
   "use strict"; // Start of use strict
-  debugger;
   // Toggle the side navigation
   $("body").on('click', "#sidebarToggle, #sidebarToggleTop", function(e) {
     $("body").toggleClass("sidebar-toggled");

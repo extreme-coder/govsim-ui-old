@@ -47,7 +47,7 @@ class Teachers extends React.Component {
   render()
   {
     return (
-      <DataTable data={this.props.teachers} columns={this.state.columns} />
+      <DataTable data={this.props.teachers} columns={this.state.columns} title="Teacher" addNewLink="/teachers/new" />
     )
   }
 }
