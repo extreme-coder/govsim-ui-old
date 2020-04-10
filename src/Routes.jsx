@@ -11,11 +11,13 @@ import AddRoom from './AddRoom';
 import Teachers from './teachers';
 import SchoolSignUp from './SchoolSignUp';
 import SignupPage from './pages/SignupPage';
+import DashboardHome from "./pages/DashboardHome"
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link,
+    Redirect,
     withRouter
   } from "react-router-dom";
 
@@ -24,6 +26,17 @@ import Students from './Students';
 import BasePage from './layout/BasePage'
 
 const Routes = ({ location }) => {
+    let homepage
+    if(localStorage.getItem('user') == null){
+        homepage = (<Login/>)
+    } else {
+        homepage = (<Redirect
+            to={{
+              pathname: "/dashboard",
+              state: { from: location }
+            }}
+          />)
+    }
     return (
         <BasePage>
             <Switch>    
@@ -32,7 +45,7 @@ const Routes = ({ location }) => {
             </Route>
             
             <Route path="/login">
-                <Login />
+                {homepage}
             </Route>
 
             <Route path="/rooms/:id" component={AddRoom}/>
@@ -59,6 +72,10 @@ const Routes = ({ location }) => {
 
             <Route path="/schoolsignup">
                 <SchoolSignUp />
+            </Route>
+
+            <Route path="/dashboard">
+                <DashboardHome />
             </Route>
             </Switch>
         </BasePage>
