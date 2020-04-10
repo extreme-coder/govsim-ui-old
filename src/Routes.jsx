@@ -6,6 +6,7 @@ import Rooms from './Rooms';
 import Families from './families';
 import AddFamily from './addFamily';
 import Login from './login';
+import Logout from './logout';
 import AddTeacher from './AddTeacher';
 import AddClass from './AddClass';
 import AddEmail from './editEmail';
@@ -49,6 +50,9 @@ const Routes = ({ location }) => {
             <Route path="/login">
                 {homepage}
             </Route>
+            <Route path="/logout" component={Logout} />
+                
+            
 
             <Route path="/rooms/:id" component={AddRoom}/>
             <Route path="/rooms/new" component={AddRoom}/>    
