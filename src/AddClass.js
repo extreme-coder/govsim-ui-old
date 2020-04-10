@@ -41,9 +41,16 @@ class AddClass extends React.Component {
     }
 
     render() {
+      var title = ""
+      if (this.props.match.params.id=="new") {
+        title = "New Class"
+      } else {
+        title = "Edit Class"
+      }
+      debugger;
       return (
         <div>
-            <h3>Add Class</h3>
+            <h3>{title}</h3>
             <Formik enableReinitialize onSubmit={this.saveClass}  initialValues={this.props.class}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>            
