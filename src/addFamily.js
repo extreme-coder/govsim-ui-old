@@ -11,8 +11,8 @@ class AddFamily extends React.Component {
   saveFamily = (values) => {  
     values.address.country = this.state.country
     values.address.state = this.state.region   
-    if (this.match.params.id == 'new') {        
-      this.props.AddFamily(values)          
+    if (this.props.match.params.id == 'new') {        
+      this.props.addFamily(values)          
     } else {
       this.props.updateFamily(values)
     }        
@@ -31,6 +31,11 @@ class AddFamily extends React.Component {
         this.setState({ region: val });
     }
 
+    constructor(props) {
+      super(props)
+      this.state = {}
+  }
+
     render() {
       return (
         <div>
@@ -40,7 +45,7 @@ class AddFamily extends React.Component {
           <Form noValidate onSubmit={props.handleSubmit}>            
             <Form.Group controlId="formBasicName">
                     
-                    <TextField name="name" label="Name" placeholder="Enter Name" />
+                    <TextField name="family_name" label="Name" placeholder="Enter Name" />
 
                     <TextField name="address.street" label="Street" placeholder="Enter Street" />
                     <TextField name="address.city" label="City" placeholder="Enter City" />

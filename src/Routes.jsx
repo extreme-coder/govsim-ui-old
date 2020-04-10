@@ -3,6 +3,8 @@ import React from 'react';
 import Classes from './Classes';
 import Emails from './emails';
 import Rooms from './Rooms';
+import Families from './families';
+import AddFamily from './addFamily';
 import Login from './login';
 import AddTeacher from './AddTeacher';
 import AddClass from './AddClass';
@@ -38,6 +40,10 @@ const Routes = ({ location }) => {
             <Route path="/rooms/:id" component={AddRoom}/>
             <Route path="/rooms/new" component={AddRoom}/>    
             <Route path="/rooms" component={Rooms} />
+
+            <Route path="/families/:id" component={AddFamily}/>
+            <Route path="/families/new" component={AddFamily}/>    
+            <Route path="/families" component={Families} />
 
             <Route path="/teachers/:id" component={AddTeacher}/>
             <Route path="/teachers/new" component={AddTeacher}/>    

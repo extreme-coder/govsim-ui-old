@@ -40,6 +40,9 @@ const Styles = styled.div`
 `
 
 function DataTable({ columns, data, title, addNewLink }) {
+  if (!data) (
+    data =[]
+  )
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,

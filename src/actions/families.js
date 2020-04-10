@@ -1,13 +1,20 @@
 import { createAction } from 'redux-actions';
 
-export const getFamilies = createAction('LOAD_FAMILIES', (id) => ({
-request: {
-  url: '/families/' + id
-}
+export const getFamily = createAction('LOAD_FAMILY', (id) => ({
+    request: {
+      url: '/families/' + id
+    }
+  })
+);
+
+export const getFamilies = createAction('LOAD_FAMILIES', () => ({
+  request: {
+    url: '/families'
+  }
 })
 );
 
-export const addFamilies = createAction('ADD_FAMILIES', (family) => ({
+export const addFamily = createAction('ADD_FAMILIES', (family) => ({
   request: {
     url: '/families',
     method: 'POST',

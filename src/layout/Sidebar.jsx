@@ -87,6 +87,12 @@ class Sidebar extends React.Component {
                 <span>Students </span>
                 </Link>
             </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/families">
+                <i className="fas fa-fw fa-chart-area"></i>
+                <span>Families </span>
+                </Link>
+            </li>
                       
             <hr className="sidebar-divider"/>
       

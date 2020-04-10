@@ -54,7 +54,7 @@ class EditStudent extends React.Component {
                     <TextField name="password"  label="Password" placeholder="Password" />
 
                     <FieldArray name="student_class" component={StudentClass} />
-
+                    <h6> </ h6>
                     <Button variant="primary" type="submit">
                         Save
                     </Button>
