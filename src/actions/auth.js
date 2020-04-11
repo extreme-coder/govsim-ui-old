@@ -13,7 +13,7 @@ export const login = createAction('LOGIN', (loginData) => ({
     options: {
       onSuccess({ getState, dispatch, response }) {        
         localStorage.setItem('user', JSON.stringify(response.data));
-        window.location = '/';
+        window.location = '/dashboard';
       }
     }
   })
