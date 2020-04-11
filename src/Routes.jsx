@@ -29,17 +29,7 @@ import Students from './Students';
 import DashboardRoute from './layout/DashboardRoute'
 
 const Routes = ({ location }) => {
-    let homepage
-    if(localStorage.getItem('user') == null){
-        homepage = (<Login/>)
-    } else {
-        homepage = (<Redirect
-            to={{
-              pathname: "/dashboard",
-              state: { from: location }
-            }}
-          />)
-    }
+        
     return (
       
         <Switch>    
@@ -49,6 +39,8 @@ const Routes = ({ location }) => {
             <Route path="/login">
                   <Login />
             </Route>
+            <Route path="/logout" component={Logout} />
+                  
             <Route path="/schoolsignup">
                 <SchoolSignUp />
             </Route>
@@ -81,9 +73,8 @@ const Routes = ({ location }) => {
 
             
 
-            <Route path="/dashboard">
-                <DashboardHome />
-            </Route>
+            <DashboardRoute path="/dashboard" component={DashboardHome} />
+               
         </Switch>
         
     )

@@ -4,6 +4,7 @@ import TextField from './common/TextField';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import * as actions from './actions/auth';
+import {Redirect} from 'react-router-dom';
 
 class Login extends React.Component {
 
@@ -13,6 +14,16 @@ class Login extends React.Component {
     }
 
     render() {
+      if(localStorage.getItem('user') != null) {
+        return (
+          <Redirect
+              to={{
+                pathname: "/dashboard"
+              }}
+            />
+        )
+      }
+
       return (
         <div>
             <h3>Log In</h3>
