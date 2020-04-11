@@ -64,7 +64,7 @@ class Sidebar extends React.Component {
               <div className="sidebar-brand-icon rotate-n-15">                
                 <FontAwesomeIcon icon={faLaughWink} size="lg"/>
               </div>
-              <div className="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+              <div className="sidebar-brand-text mx-3">Classik</div>
             </a>
                       
             <hr className="sidebar-divider my-0" />
@@ -72,7 +72,7 @@ class Sidebar extends React.Component {
             <li className="nav-item active">
               <a className="nav-link" href="index.html">                
                 <FontAwesomeIcon icon={faTachometerAlt} size="lg"/>
-                <span>Dashboard</span></a>
+                <span> Dashboard</span></a>
             </li>
 
             <hr className="sidebar-divider"/>

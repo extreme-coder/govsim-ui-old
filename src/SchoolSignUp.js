@@ -42,7 +42,7 @@ class SchoolSignUp extends React.Component {
     render() {
       return (
         <div>
-        <h3>Add Teacher</h3>
+        <h3>Edit School</h3>
         <Formik enableReinitialize onSubmit={this.schoolSignUp}  initialValues={this.props.school}>
         {(props) => (
           <Form noValidate onSubmit={props.handleSubmit}>            
@@ -62,7 +62,7 @@ class SchoolSignUp extends React.Component {
               <TextField name="address.postal_code" label="Postal Code" placeholder="Enter Postal Code" />
                 
               <Button variant="primary" type="submit">
-                Sign Up
+                Save
               </Button>
             </Form.Group> 
           </Form> 
