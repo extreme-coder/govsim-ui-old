@@ -3,9 +3,14 @@ import {Form, Button} from 'react-bootstrap';
 import { Formik } from "formik";
 import { connect } from 'react-redux';
 import TextField from './common/TextField';
+import FormWrapper from './common/FormWrapper';
 import * as actions from './actions/teachers';
 
 class AddTeacher extends React.Component {
+  constructor(props){
+    super(props)
+    this.isNew = false
+  }
 
     saveTeacher = (values) => {     
       if (this.props.match.params.id == 'new') {        
@@ -14,17 +19,25 @@ class AddTeacher extends React.Component {
         this.props.updateTeacher(values)
       }        
     }
+ 
+    setNew(id){
+      if (id=='new') {
+        this.isNew=true
+      } else {
+        this.isNew=false
+      }
+    }
 
     componentDidMount() {      
       if (this.props.match.params.id!= 'new') {
         this.props.getTeacher(this.props.match.params.id);
       }
+      this.setNew(this.props.match.params.id)
     }  
 
     render() {      
       return (
-        <div>
-          <h3>Add Teacher</h3>
+        <FormWrapper title="Teacher" isNew={this.isNew}>
           <Formik enableReinitialize onSubmit={this.saveTeacher}  initialValues={this.props.teacher}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>            
@@ -37,8 +50,7 @@ class AddTeacher extends React.Component {
              </Form> 
           )}
             </Formik>
-        </div>
-
+        </FormWrapper>
       );
     }
 }

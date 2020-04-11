@@ -25,7 +25,7 @@ class AddClass extends React.Component {
       this.props.updateClass(values)
     }  
   }
-
+ 
     componentDidMount() {
       
       this.props.getTeachers();

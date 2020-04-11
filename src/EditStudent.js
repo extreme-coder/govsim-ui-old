@@ -1,9 +1,10 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import DateField from "./common/DateField";
 import { connect } from 'react-redux';
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
+import FormWrapper from './common/FormWrapper';
 import StudentClass from './StudentClass';
 import * as actions from './actions/students';
 import * as classActions from './actions/classes';
@@ -11,6 +12,10 @@ import * as familyActions from './actions/families';
 import { Formik, Field, FieldArray } from 'formik';
 
 class EditStudent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.isNew = false
+  }
 
   classOptions() {
     return this.props.classes.map((clas) => {
@@ -18,20 +23,29 @@ class EditStudent extends React.Component {
     });
   }
 
-  saveStudent = (values) => {       
-    if (this.props.match.params.id == 'new') {        
-      this.props.addStudent(values)          
+  saveStudent = (values) => {
+    if (this.props.match.params.id == 'new') {
+      this.props.addStudent(values)
     } else {
       this.props.updateStudent(values)
-    }  
+    }
   }
 
-  componentDidMount() {      
-    if (this.props.match.params.id != 'new') {
+  setNew(id) {
+    if (id === 'new') {
+      this.isNew = true
+    } else {
+      this.isNew = false
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.match.params.id !== 'new') {
       this.props.getStudent(this.props.match.params.id);
-    } 
+    }
     this.props.getFamilies();
-  }  
+    this.setNew(this.props.match.params.id)
+  }
 
   familyOptions() {
     return this.props.families.map((family) => {
@@ -39,48 +53,45 @@ class EditStudent extends React.Component {
     })
   }
 
-    render() {
-      
-      return (
-        <div>
-          <h3>Create new student</h3>
-          <div>
-            <Formik enableReinitialize onSubmit={this.saveStudent}  initialValues={this.props.student}>
-              {(props) => (
-                <div>
-                  <Form noValidate onSubmit={props.handleSubmit}>           
-                  <Form.Group controlId="formBasicName">
-                      
-                    <TextField name="first_name"  label="First name" placeholder="Enter First name" />
+  render() {
 
-                    <TextField name="last_name" label="Last name" placeholder="Enter Last name" />
+    return (
+      <FormWrapper title="Student" isNew={this.isNew}>
+        <Formik enableReinitialize onSubmit={this.saveStudent} initialValues={this.props.student}>
+          {(props) => (
+            <div>
+              <Form noValidate onSubmit={props.handleSubmit}>
+                <Form.Group controlId="formBasicName">
 
-                    <DateField name="date_of_birth"  label="Date of Birth" placeholder="Enter Date of Birth" />
+                  <TextField name="first_name" label="First name" placeholder="Enter First name" />
 
-                    <TextField name="email"  label="Email" placeholder="Email" />
+                  <TextField name="last_name" label="Last name" placeholder="Enter Last name" />
 
-                    <TextField name="password"  label="Password" placeholder="Password" />
+                  <DateField name="date_of_birth" label="Date of Birth" placeholder="Enter Date of Birth" />
 
-                    <SelectField name="family.id" label="Family" placeholder="Family" >
-                  <option></option>
-                  {this.familyOptions()}
-                </SelectField>
+                  <TextField name="email" label="Email" placeholder="Email" />
 
-                    <FieldArray name="student_class" component={StudentClass} />
-                    <h6> </ h6>
-                    <Button variant="primary" type="submit">
-                        Save
+                  <TextField name="password" label="Password" placeholder="Password" />
+
+                  <SelectField name="family.id" label="Family" placeholder="Family" >
+                    <option></option>
+                    {this.familyOptions()}
+                  </SelectField>
+
+                  <FieldArray name="student_class" component={StudentClass} />
+                  <h6> </ h6>
+                  <Button variant="primary" type="submit">
+                    Save
                     </Button>
-                  </Form.Group>
-                </Form> 
-              
-                </div>
-              )}
-            </Formik>
-          </div>
-        </div> 
-      )  
-    }
+                </Form.Group>
+              </Form>
+
+            </div>
+          )}
+        </Formik>
+      </FormWrapper>
+    )
+  }
 }
 
 const mapStateToProps = state => {
@@ -91,6 +102,6 @@ const mapStateToProps = state => {
   }
 }
 
-export default  connect(
-  mapStateToProps, {...actions,...classActions, ...familyActions}
+export default connect(
+  mapStateToProps, { ...actions, ...classActions, ...familyActions }
 )(EditStudent);

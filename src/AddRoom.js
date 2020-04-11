@@ -4,9 +4,15 @@ import { connect } from 'react-redux';
 import { Formik } from "formik";
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
+import FormWrapper from './common/FormWrapper';
 import * as actions from './actions/rooms';
 
 class AddRoom extends React.Component {
+  constructor(props){
+    super(props)
+    this.isNew = false
+  }
+
   saveRoom = (values) => {     
     if (this.props.match.params.id == 'new') {        
       this.props.addRoom(values)          
@@ -14,17 +20,25 @@ class AddRoom extends React.Component {
       this.props.updateRoom(values)
     }        
   }
+ 
+  setNew(id){
+    if (id=='new') {
+      this.isNew=true
+    } else {
+      this.isNew=false
+    }
+  }
 
   componentDidMount() {      
     if (this.props.match.params.id!= 'new') {
       this.props.getRoom(this.props.match.params.id);
     }
+    this.setNew(this.props.match.params.id)
   }  
     render() {
       return (
-        <div>
-            <h3>Add Room</h3>
-            <Formik enableReinitialize onSubmit={this.saveRoom}  initialValues={this.props.room}>
+        <FormWrapper title="Room" isNew={this.isNew}>
+          <Formik enableReinitialize onSubmit={this.saveRoom}  initialValues={this.props.room}>
         {(props) => (
           <Form noValidate onSubmit={props.handleSubmit}>            
             <Form.Group controlId="formBasicName">
@@ -38,8 +52,7 @@ class AddRoom extends React.Component {
           </Form> 
         )}
         </Formik>
-        </div>
-
+        </FormWrapper>
       );
     }
 }
