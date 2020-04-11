@@ -4,12 +4,12 @@ class DashboardHome extends React.Component{
     render(){
         let loggedInUser = ''
         if (localStorage.getItem('user') != null) {
-            loggedInUser = JSON.parse(localStorage.getItem('user')).user.username
+            loggedInUser = JSON.parse(localStorage.getItem('user')).user.school.name
         }
         return(
-            <div>
-                Welcome to Classic, {loggedInUser}
-            </div>
+            <h1>
+                Welcome to Classik, {loggedInUser}.
+            </h1>
         )
     }
 }
