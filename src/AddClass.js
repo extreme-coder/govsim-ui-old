@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
+import FormWrapper from './common/FormWrapper';
 import * as classActions from './actions/classes';
 import * as teacherActions from './actions/teachers';
 import * as roomActions from './actions/rooms';
@@ -12,6 +13,11 @@ import actions from 'redux-form/lib/actions';
 import { Formik } from "formik";
 
 class AddClass extends React.Component {
+  constructor(props){
+    super(props)
+    this.isNew = false
+  }
+
   saveClass = (values) => {      
     if (this.props.match.params.id == 'new') {        
       this.props.addClass(values)        
@@ -21,10 +27,20 @@ class AddClass extends React.Component {
   }
 
     componentDidMount() {
+      
       this.props.getTeachers();
       this.props.getRooms();
       if (this.props.match.params.id) {
         this.props.getClass(this.props.match.params.id);
+      }
+      this.setNew(this.props.match.params.id)
+    }
+
+    setNew(id){
+      if (id=='new') {
+        this.isNew=true
+      } else {
+        this.isNew=false
       }
     }
 
@@ -41,17 +57,9 @@ class AddClass extends React.Component {
     }
 
     render() {
-      var title = ""
-      if (this.props.match.params.id=="new") {
-        title = "New Class"
-      } else {
-        title = "Edit Class"
-      }
-      debugger;
       return (
-        <div>
-            <h3>{title}</h3>
-            <Formik enableReinitialize onSubmit={this.saveClass}  initialValues={this.props.class}>
+        <FormWrapper title="Class" isNew={this.isNew}>
+          <Formik enableReinitialize onSubmit={this.saveClass}  initialValues={this.props.class}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>            
                 <Form.Group controlId="formBasicName">     
@@ -89,8 +97,7 @@ class AddClass extends React.Component {
               </Form> 
           )}
             </Formik>
-        </div>
-
+        </FormWrapper>
       );
     }
 }
