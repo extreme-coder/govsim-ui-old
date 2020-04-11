@@ -26,7 +26,7 @@ import {
 
 import EditStudent from './EditStudent';
 import Students from './Students';
-import BasePage from './layout/BasePage'
+import DashboardRoute from './layout/DashboardRoute'
 
 const Routes = ({ location }) => {
     let homepage
@@ -41,54 +41,51 @@ const Routes = ({ location }) => {
           />)
     }
     return (
-        <BasePage>
-            <Switch>    
+      
+        <Switch>    
             <Route path="/signup">
                 <SignupPage />
             </Route>
-            
             <Route path="/login">
-                {homepage}
+                  <Login />
             </Route>
-            <Route path="/logout" component={Logout} />
-                
-            
-
-            <Route path="/rooms/:id" component={AddRoom}/>
-            <Route path="/rooms/new" component={AddRoom}/>    
-            <Route path="/rooms" component={Rooms} />
-
-            <Route path="/families/:id" component={AddFamily}/>
-            <Route path="/families/new" component={AddFamily}/>    
-            <Route path="/families" component={Families} />
-
-            <Route path="/teachers/:id" component={AddTeacher}/>
-            <Route path="/teachers/new" component={AddTeacher}/>    
-            <Route path="/teachers" component={Teachers} />
-                
-            <Route path="/students/:id" component={EditStudent}/>
-            <Route path="/students/new" component={EditStudent}/>    
-            <Route path="/students" component={Students} />
-
-            <Route path="/schools/:id" component={SchoolSignUp}/>
-            <Route path="/schools/new" component={SchoolSignUp}/>    
-            <Route path="/classes/:id" component={AddClass}/>
-            <Route path="/classes/new" component={AddClass}/>    
-            <Route path="/classes" component={Classes} />
-
-            <Route path="/emails/:id" component={AddEmail}/>
-            <Route path="/emails/new" component={AddEmail}/>    
-            <Route path="/emails" component={Emails} />
-
             <Route path="/schoolsignup">
                 <SchoolSignUp />
             </Route>
 
+            <DashboardRoute path="/families/:id" component={AddFamily}/>
+            <DashboardRoute path="/families/new" component={AddFamily}/>    
+            <DashboardRoute path="/families" component={Families} />
+                    
+            <DashboardRoute path="/rooms/:id" component={AddRoom}/>
+            <DashboardRoute path="/rooms/new" component={AddRoom}/>    
+            <DashboardRoute path="/rooms" component={Rooms} />
+
+            <DashboardRoute path="/teachers/:id" component={AddTeacher}/>
+            <DashboardRoute path="/teachers/new" component={AddTeacher}/>    
+            <DashboardRoute path="/teachers" component={Teachers} />
+                
+            <DashboardRoute path="/students/:id" component={EditStudent}/>
+            <DashboardRoute path="/students/new" component={EditStudent}/>    
+            <DashboardRoute path="/students" component={Students} />
+
+            <DashboardRoute path="/schools/:id" component={SchoolSignUp}/>
+            <DashboardRoute path="/schools/new" component={SchoolSignUp}/>    
+            <DashboardRoute path="/classes/:id" component={AddClass}/>
+            <DashboardRoute path="/classes/new" component={AddClass}/>    
+            <DashboardRoute path="/classes" component={Classes} />
+
+            <DashboardRoute path="/emails/:id" component={AddEmail}/>
+            <DashboardRoute path="/emails/new" component={AddEmail}/>    
+            <DashboardRoute path="/emails" component={Emails} />
+
+            
+
             <Route path="/dashboard">
                 <DashboardHome />
             </Route>
-            </Switch>
-        </BasePage>
+        </Switch>
+        
     )
 }
 

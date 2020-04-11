@@ -1,6 +1,5 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
-import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';

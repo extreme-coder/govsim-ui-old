@@ -65,17 +65,17 @@ class AddClass extends React.Component {
 
                 <DateField name="end_date" label="End Date" placeholder="Enter End Date" />
 
-                <SelectField name="teacher" label="Teacher" placeholder="Teacher" >
+                <SelectField name="teacher.id" label="Teacher" placeholder="Teacher" >
                   <option></option>
                   {this.teacherOptions()}
                 </SelectField>
 
-                <SelectField name="assistant" label="Assistant" placeholder="Assistant" >
+                <SelectField name="assistant.id" label="Assistant" placeholder="Assistant" >
                   <option></option>
                   {this.teacherOptions()}
                 </SelectField>
 
-                <SelectField name="room_for_class" label="Room" placeholder="Room" >
+                <SelectField name="room_for_class.id" label="Room" placeholder="Room" >
                   <option></option>
                   {this.roomOptions()}
                 </SelectField>

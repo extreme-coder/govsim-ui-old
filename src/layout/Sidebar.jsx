@@ -113,7 +113,7 @@ class Sidebar extends React.Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="rooms">
+              <Link className="nav-link" to="/rooms">
                 <i className="fas fa-fw fa-chart-area"></i>
                 <span>Rooms </span>
               </Link>
