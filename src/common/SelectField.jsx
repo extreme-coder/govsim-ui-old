@@ -27,7 +27,7 @@ const SelectField = ({
               <Form.Control
                 {...field}
                 type={type}
-                value={1}
+                value={field.value}
                 isValid={form.touched[field.name] && isValid}
                 isInvalid={isInvalid}
                 feedback={form.errors[field.name]}
