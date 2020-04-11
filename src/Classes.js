@@ -8,6 +8,9 @@ class Classes extends React.Component {
   get columns()
   {
     return [{
+      name: "Name",
+      accessor: "name"
+  },{
         name: "Start Time",
         accessor: "start_time"
     },{

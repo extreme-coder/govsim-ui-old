@@ -7,6 +7,7 @@ import SelectField from './common/SelectField';
 import StudentClass from './StudentClass';
 import * as actions from './actions/students';
 import * as classActions from './actions/classes';
+import * as familyActions from './actions/families';
 import { Formik, Field, FieldArray } from 'formik';
 
 class EditStudent extends React.Component {
@@ -29,7 +30,14 @@ class EditStudent extends React.Component {
     if (this.props.match.params.id != 'new') {
       this.props.getStudent(this.props.match.params.id);
     } 
+    this.props.getFamilies();
   }  
+
+  familyOptions() {
+    return this.props.families.map((family) => {
+      return <option key={family.id} value={family.id}>{family.family_name}</option>
+    })
+  }
 
     render() {
       
@@ -53,6 +61,11 @@ class EditStudent extends React.Component {
 
                     <TextField name="password"  label="Password" placeholder="Password" />
 
+                    <SelectField name="family.id" label="Family" placeholder="Family" >
+                  <option></option>
+                  {this.familyOptions()}
+                </SelectField>
+
                     <FieldArray name="student_class" component={StudentClass} />
                     <h6> </ h6>
                     <Button variant="primary" type="submit">
@@ -74,9 +87,10 @@ const mapStateToProps = state => {
   return {
     student: state.students.student,
     ...state.classes,
+    ...state.families
   }
 }
 
 export default  connect(
-  mapStateToProps, {...actions,...classActions}
+  mapStateToProps, {...actions,...classActions, ...familyActions}
 )(EditStudent);
