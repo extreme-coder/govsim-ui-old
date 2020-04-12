@@ -11,6 +11,7 @@ import * as classActions from './actions/classes';
 import * as familyActions from './actions/families';
 import { Formik, Field, FieldArray } from 'formik';
 
+
 class EditStudent extends React.Component {
   constructor(props) {
     super(props)
@@ -19,7 +20,7 @@ class EditStudent extends React.Component {
 
   classOptions() {
     return this.props.classes.map((clas) => {
-      return (<option key={clas.id} value={clas.id}>{clas.name}</option>)
+      return ({ value: clas.id, label: clas.name })
     });
   }
 
@@ -49,8 +50,8 @@ class EditStudent extends React.Component {
 
   familyOptions() {
     return this.props.families.map((family) => {
-      return <option key={family.id} value={family.id}>{family.family_name}</option>
-    })
+      return ({ value: family.id, label: family.name })
+    });
   }
 
   render() {
@@ -74,7 +75,6 @@ class EditStudent extends React.Component {
                   <TextField name="password" label="Password" placeholder="Password" />
 
                   <SelectField name="family.id" label="Family" placeholder="Family" >
-                    <option></option>
                     {this.familyOptions()}
                   </SelectField>
 

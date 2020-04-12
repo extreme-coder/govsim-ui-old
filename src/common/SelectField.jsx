@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, InputGroup } from "react-bootstrap";
 import { Field } from "formik";
+import Select from "react-select";
 
 const SelectField = ({
   as,
@@ -18,23 +19,13 @@ const SelectField = ({
       render={({ field, form }) => {
         const isValid = !form.errors[field.name];
         const isInvalid = form.touched[field.name] && !isValid;
-        
+
         return (
           <Form.Group as={as} md={md} controlId={controlId}>
             <Form.Label>{label}</Form.Label>
             <InputGroup>
               {inputGroupPrepend}
-              <Form.Control
-                {...field}
-                type={type}
-                value={field.value}
-                isValid={form.touched[field.name] && isValid}
-                isInvalid={isInvalid}
-                feedback={form.errors[field.name]}
-                as="select"
-              >
-                {children}
-              </Form.Control>
+              <Select options={children} />
               <Form.Control.Feedback type="invalid">
                 {form.errors[field.name]}
               </Form.Control.Feedback>
