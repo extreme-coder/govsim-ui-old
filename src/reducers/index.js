@@ -1,25 +1,13 @@
 import { combineReducers } from 'redux'
-import students from './students'
-import schools from './schools'
-import classes from './classes'
-import rooms from './rooms'
-import {alert} from './alert'
-import {auth} from './auth'
-import teachers from './teachers'
-import emails from './emails'
-import families from './families'
+import entities from './entities'
+import { alert } from './alert'
+import { auth } from './auth'
 
 import { reducer as formReducer } from 'redux-form'
 import { loadingBarReducer } from 'react-redux-loading-bar'
 
 export default combineReducers({
-  students,
-  schools,
-  teachers,
-  rooms,
-  classes,
-  emails,
-  families,
+  entities,
   alert,
   auth,
   form: formReducer,

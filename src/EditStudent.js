@@ -6,9 +6,8 @@ import TextField from './common/TextField';
 import SelectField from './common/SelectField';
 import FormWrapper from './common/FormWrapper';
 import StudentClass from './StudentClass';
-import * as actions from './actions/students';
-import * as classActions from './actions/classes';
-import * as familyActions from './actions/families';
+import * as actions from './actions/entity_actions';
+
 import { Formik, Field, FieldArray } from 'formik';
 
 
@@ -25,10 +24,10 @@ class EditStudent extends React.Component {
   }
 
   saveStudent = (values) => {
-    if (this.props.match.params.id == 'new') {
-      this.props.addStudent(values)
+    if (this.props.match.params.id === 'new') {
+      this.props.addEntity('student', values)
     } else {
-      this.props.updateStudent(values)
+      this.props.updateEntity('student', values)
     }
   }
 
@@ -42,9 +41,9 @@ class EditStudent extends React.Component {
 
   componentDidMount() {
     if (this.props.match.params.id !== 'new') {
-      this.props.getStudent(this.props.match.params.id);
+      this.props.getEntity('student', this.props.match.params.id);
     }
-    this.props.getFamilies();
+    this.props.getEntities('family');
     this.setNew(this.props.match.params.id)
   }
 
@@ -64,7 +63,7 @@ class EditStudent extends React.Component {
               <Form noValidate onSubmit={props.handleSubmit}>
                 <Form.Group controlId="formBasicName">
 
-                  <TextField name="first_name" label="First name" placeholder="Enter First name" />
+                  <TextField required name="first_name" label="First name" placeholder="Enter First name" />
 
                   <TextField name="last_name" label="Last name" placeholder="Enter Last name" />
 
@@ -96,12 +95,11 @@ class EditStudent extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    student: state.students.student,
-    ...state.classes,
-    ...state.families
+    student: state.entities.student,
+    ...state.entities
   }
 }
 
 export default connect(
-  mapStateToProps, { ...actions, ...classActions, ...familyActions }
+  mapStateToProps, actions
 )(EditStudent);

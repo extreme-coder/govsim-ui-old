@@ -1,51 +1,47 @@
 import React from 'react';
 import DataTable from './common/DataTable'
-import * as actions from './actions/teachers';
+import * as actions from './actions/entity_actions';
 import { connect } from 'react-redux';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 class Teachers extends React.Component {
-   
 
-  get columns()
-  {
+
+  get columns() {
     return [{
       name: "Name",
       accessor: "name"
-    },{
+    }, {
       id: "classes",
       name: "Classes",
-      accessor: function(row)
-      {
-        let classNames =row.classes.map((cl) => {
+      accessor: function (row) {
+        let classNames = row.classes.map((cl) => {
           return cl.name;
         })
         return classNames.join(', ')
       }
-    },{
+    }, {
       id: "edit",
       name: "Edit",
-      accessor: function(row){
-        let link = "/teachers/" + row.id 
-        return <Link to= {link} style ={{color: "Black"}}>Edit</Link>
+      accessor: function (row) {
+        let link = "/teachers/" + row.id
+        return <Link to={link} style={{ color: "Black" }}>Edit</Link>
       }
     }];
   }
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.state = {};
     this.state.columns = this.columns;
   }
 
   componentDidMount() {
-    this.props.getTeachers();
+    this.props.getEntities('teacher');
   }
 
-  render()
-  {
+  render() {
     return (
       <DataTable data={this.props.teachers} columns={this.state.columns} title="Teacher" addNewLink="/teachers/new" />
     )
@@ -54,7 +50,7 @@ class Teachers extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    ...state.teachers
+    ...state.entities
   };
 }
 

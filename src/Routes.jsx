@@ -22,61 +22,61 @@ import {
     Link,
     Redirect,
     withRouter
-  } from "react-router-dom";
+} from "react-router-dom";
 
 import EditStudent from './EditStudent';
 import Students from './Students';
 import DashboardRoute from './layout/DashboardRoute'
 
 const Routes = ({ location }) => {
-        
+
     return (
-      
-        <Switch>    
+
+        <Switch>
             <Route path="/signup">
                 <SignupPage />
             </Route>
             <Route path="/login">
-                  <Login />
+                <Login />
             </Route>
             <Route path="/logout" component={Logout} />
-                  
-            <Route path="/schoolsignup">
-                <SchoolSignUp />
-            </Route>
 
-            <DashboardRoute path="/families/:id" component={AddFamily}/>
-            <DashboardRoute path="/families/new" component={AddFamily}/>    
+            <Route path="/schoolsignup/:id" component={SchoolSignUp} />
+
+
+            <DashboardRoute path="/families/:id" component={AddFamily} />
+            <DashboardRoute path="/families/new" component={AddFamily} />
             <DashboardRoute path="/families" component={Families} />
-                    
-            <DashboardRoute path="/rooms/:id" component={AddRoom}/>
-            <DashboardRoute path="/rooms/new" component={AddRoom}/>    
+
+            <DashboardRoute path="/rooms/:id" component={AddRoom} />
+            <DashboardRoute path="/rooms/new" component={AddRoom} />
             <DashboardRoute path="/rooms" component={Rooms} />
 
-            <DashboardRoute path="/teachers/:id" component={AddTeacher}/>
-            <DashboardRoute path="/teachers/new" component={AddTeacher}/>    
+            <DashboardRoute path="/teachers/:id" component={AddTeacher} />
+            <DashboardRoute path="/teachers/new" component={AddTeacher} />
             <DashboardRoute path="/teachers" component={Teachers} />
-                
-            <DashboardRoute path="/students/:id" component={EditStudent}/>
-            <DashboardRoute path="/students/new" component={EditStudent}/>    
+
+            <DashboardRoute path="/students/:id" component={EditStudent} />
+            <DashboardRoute path="/students/new" component={EditStudent} />
             <DashboardRoute path="/students" component={Students} />
 
-            <DashboardRoute path="/schools/:id" component={SchoolSignUp}/>
-            <DashboardRoute path="/schools/new" component={SchoolSignUp}/>    
-            <DashboardRoute path="/classes/:id" component={AddClass}/>
-            <DashboardRoute path="/classes/new" component={AddClass}/>    
+            <DashboardRoute path="/schools/:id" component={SchoolSignUp} />
+            <DashboardRoute path="/schools/new" component={SchoolSignUp} />
+
+            <DashboardRoute path="/classes/:id" component={AddClass} />
+            <DashboardRoute path="/classes/new" component={AddClass} />
             <DashboardRoute path="/classes" component={Classes} />
 
-            <DashboardRoute path="/emails/:id" component={AddEmail}/>
-            <DashboardRoute path="/emails/new" component={AddEmail}/>    
-            <DashboardRoute path="/emails" component={Emails} />
+            <DashboardRoute path="/email_messages/:id" component={AddEmail} />
+            <DashboardRoute path="/email_messages/new" component={AddEmail} />
+            <DashboardRoute path="/email_messages" component={Emails} />
 
-            
+
 
             <DashboardRoute path="/dashboard" component={DashboardHome} />
-               
+
         </Switch>
-        
+
     )
 }
 

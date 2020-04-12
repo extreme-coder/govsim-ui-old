@@ -1,58 +1,55 @@
 import React from 'react';
 import DataTable from './common/DataTable'
-import * as actions from './actions/students';
+import * as actions from './actions/entity_actions';
 import { connect } from 'react-redux';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Students extends React.Component {
-   
 
-  get columns()
-  {
+
+  get columns() {
     return [{
       name: "First Name",
       accessor: "first_name"
-    },{
+    }, {
       name: "Last Name",
       accessor: "last_name"
-    },{
-        name: "Email",
-        accessor: "email"
-    },{
-        name: "Birth Date",
-        accessor: "date_of_birth"
-    },{
-        id: "edit",
-        name: "Edit",
-        accessor: function(row){
-          let link = "/students/" + row.id
-          return <Link to= {link} style ={{color: "Black"}}>Edit</Link>
-        }
+    }, {
+      name: "Email",
+      accessor: "email"
+    }, {
+      name: "Birth Date",
+      accessor: "date_of_birth"
+    }, {
+      id: "edit",
+      name: "Edit",
+      accessor: function (row) {
+        let link = "/students/" + row.id
+        return <Link to={link} style={{ color: "Black" }}>Edit</Link>
+      }
     }];
   }
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.state = {};
     this.state.columns = this.columns;
   }
 
   componentDidMount() {
-    this.props.getStudents();
+    this.props.getEntities('student');
   }
 
-  render()
-  {
+  render() {
     return (
-      <DataTable data={this.props.students} columns={this.state.columns} title="Student"  addNewLink="/students/new" />
+      <DataTable data={this.props.students} columns={this.state.columns} title="Student" addNewLink="/students/new" />
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    ...state.students
+    ...state.entities
   };
 }
 

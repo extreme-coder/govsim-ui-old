@@ -14,8 +14,8 @@ const TextField = ({
 }) => {
   return (
     <Field
-      name={name}
-      render={({ field, form }) => {
+      name={name}>
+      {({ field, form }) => {
         const isValid = !form.errors[field.name];
         const isInvalid = form.touched[field.name] && !isValid;
         return (
@@ -39,7 +39,7 @@ const TextField = ({
           </Form.Group>
         );
       }}
-    />
+    </Field>
   );
 };
 

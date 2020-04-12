@@ -1,44 +1,44 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Formik, Field, FieldArray } from 'formik';
 import SelectField from './common/SelectField';
-import * as classActions from './actions/classes';
+import * as classActions from './actions/entity_actions';
 import { connect } from 'react-redux';
 
 class StudentClass extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state = {fieldNum: 1}
+        this.state = { fieldNum: 1 }
         this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
-        this.props.getClasses()
-      }
+        this.props.getEntities('class')
+    }
 
     classOptions() {
         return this.props.classes.map((cl) => {
-          return <option key={cl.id} value={cl.id}>{cl.name}</option>
+            return <option key={cl.id} value={cl.id}>{cl.name}</option>
         })
     }
 
-    createList(){
+    createList() {
         var list = []
-        for(var i=0;i<this.state.fieldNum;i++){
-            list.push(<SelectField name={"class"+i} label={"Class "+(i+1)+":"} placeholder="Class">
+        for (var i = 0; i < this.state.fieldNum; i++) {
+            list.push(<SelectField name={"class" + i} label={"Class " + (i + 1) + ":"} placeholder="Class">
                 <option></option>
                 {this.classOptions()}
-            </SelectField>)            
+            </SelectField>)
         }
         return list
     }
 
-    handleClick(){
-        this.setState({fieldNum: this.state.fieldNum+1})
+    handleClick() {
+        this.setState({ fieldNum: this.state.fieldNum + 1 })
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 {this.createList()}
                 <Button onClick={this.handleClick}>
@@ -46,15 +46,15 @@ class StudentClass extends React.Component {
                 </Button>
             </div>
         )
-    }  
+    }
 }
 
 const mapStateToProps = state => {
     return {
-      ...state.classes,
+        ...state.entities,
     }
 }
-  
-export default  connect(
-    mapStateToProps, {...classActions}
+
+export default connect(
+    mapStateToProps, { ...classActions }
 )(StudentClass);

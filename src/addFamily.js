@@ -3,19 +3,18 @@ import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Formik } from "formik";
 import TextField from './common/TextField';
-import SelectField from './common/SelectField';
 import FormWrapper from './common/FormWrapper';
-import * as actions from './actions/families';
+import * as actions from './actions/entity_actions';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 class AddFamily extends React.Component {
   saveFamily = (values) => {
     values.address.country = this.state.country
     values.address.state = this.state.region
-    if (this.props.match.params.id == 'new') {
-      this.props.addFamily(values)
+    if (this.props.match.params.id === 'new') {
+      this.props.addEntity('family', values)
     } else {
-      this.props.updateFamily(values)
+      this.props.updateEntity('family', values)
     }
   }
 
@@ -30,7 +29,7 @@ class AddFamily extends React.Component {
 
   componentDidMount() {
     if (this.props.match.params.id != 'new') {
-      this.props.getFamily(this.props.match.params.id);
+      this.props.getEntity('family', this.props.match.params.id);
     }
     this.setNew(this.props.match.params.id)
   }
@@ -86,7 +85,7 @@ class AddFamily extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    family: state.families.family
+    family: state.entities.family
   }
 }
 

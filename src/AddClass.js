@@ -2,14 +2,10 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import DateField from "./common/DateField";
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
 import FormWrapper from './common/FormWrapper';
-import * as classActions from './actions/classes';
-import * as teacherActions from './actions/teachers';
-import * as roomActions from './actions/rooms';
-import actions from 'redux-form/lib/actions';
+import * as actions from './actions/entity_actions';
 import { Formik } from "formik";
 
 class AddClass extends React.Component {
@@ -19,19 +15,19 @@ class AddClass extends React.Component {
   }
 
   saveClass = (values) => {
-    if (this.props.match.params.id == 'new') {
-      this.props.addClass(values)
+    if (this.props.match.params.id === 'new') {
+      this.props.addEntity('class', values)
     } else {
-      this.props.updateClass(values)
+      this.props.updateEntity('class', values)
     }
   }
 
   componentDidMount() {
 
-    this.props.getTeachers();
-    this.props.getRooms();
-    if (this.props.match.params.id) {
-      this.props.getClass(this.props.match.params.id);
+    this.props.getEntities('teacher');
+    this.props.getEntities('room');
+    if (this.props.match.params.id !== 'new') {
+      this.props.getEntity('class', this.props.match.params.id);
     }
     this.setNew(this.props.match.params.id)
   }
@@ -101,12 +97,11 @@ class AddClass extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    class: state.classes.class,
-    ...state.teachers,
-    ...state.rooms
+    class: state.entities.class,
+    ...state.entities
   }
 }
 
 export default connect(
-  mapStateToProps, { ...classActions, ...teacherActions, ...roomActions }
+  mapStateToProps, actions
 )(AddClass);
