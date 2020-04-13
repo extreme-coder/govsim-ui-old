@@ -9,6 +9,9 @@ import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-countr
 
 class AddFamily extends React.Component {
   saveFamily = (values) => {
+    if (!values.address){
+      values.address = {}
+    }
     values.address.country = this.state.country
     values.address.state = this.state.region
     if (this.props.match.params.id === 'new') {
