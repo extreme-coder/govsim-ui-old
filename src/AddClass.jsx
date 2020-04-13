@@ -1,13 +1,15 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import {Form, Button} from 'react-bootstrap';
 import DateField from "./common/DateField";
 import { connect } from 'react-redux';
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
 import FormWrapper from './common/FormWrapper';
 import PriceOption from './PriceOption';
+import CheckBox from './CheckBox';
 import * as actions from './actions/entity_actions';
-import { Formik, Field, FieldArray } from "formik";
+import { Formik, FieldArray } from "formik";
+
 
 class AddClass extends React.Component {
   constructor(props) {
@@ -82,7 +84,21 @@ class AddClass extends React.Component {
                   {this.roomOptions()}
                 </SelectField>
 
-                <TextField name="days_of_class" label="Days Of Class" placeholder="Enter Days" />
+                <h5>Days Of class </h5>
+                <h7>Sunday</h7>
+                <CheckBox name="sunday"/>
+                <h7> Monday</h7>
+                <CheckBox name="monday"/>
+                <h7> Tuesday</h7>
+                <CheckBox name="tuesday"/>
+                <h7> Wenesday</h7>
+                <CheckBox name="wenesday"/>
+                <h7> Thursday</h7>
+                <CheckBox name="thursday"/>
+                <h7> Friday</h7>
+                <CheckBox name="friday"/>
+                <h7> Saturday</h7>
+                <CheckBox name="saturday"/>
 
                 <FieldArray name="student_class" component={PriceOption} />
                 <h6> </ h6>

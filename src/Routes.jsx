@@ -8,7 +8,7 @@ import AddFamily from './addFamily';
 import Login from './login';
 import Logout from './logout';
 import AddTeacher from './AddTeacher';
-import AddClass from './AddClass';
+import AddClass from './AddClass.jsx';
 import AddEmail from './editEmail';
 import AddRoom from './AddRoom';
 import Teachers from './teachers';
