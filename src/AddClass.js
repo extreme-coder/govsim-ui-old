@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
 import FormWrapper from './common/FormWrapper';
+import PriceOption from './PriceOption';
 import * as actions from './actions/entity_actions';
-import { Formik } from "formik";
+import { Formik, Field, FieldArray } from "formik";
 
 class AddClass extends React.Component {
   constructor(props) {
@@ -82,6 +83,9 @@ class AddClass extends React.Component {
                 </SelectField>
 
                 <TextField name="days_of_class" label="Days Of Class" placeholder="Enter Days" />
+
+                <FieldArray name="student_class" component={PriceOption} />
+                <h6> </ h6>
 
                 <Button variant="primary" type="submit">
                   Save
