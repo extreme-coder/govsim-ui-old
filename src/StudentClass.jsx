@@ -1,60 +1,45 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { Formik, Field, FieldArray } from 'formik';
-import SelectField from './common/SelectField';
-import * as classActions from './actions/entity_actions';
+import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import * as classActions from './actions/entity_actions';
+import SelectField from './common/SelectField';
 
 class StudentClass extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { fieldNum: 1 }
-        this.handleClick = this.handleClick.bind(this)
-    }
+  componentDidMount() {
+    this.props.getEntities('class')
+  }
 
-    componentDidMount() {
-        this.props.getEntities('class')
-    }
+  classOptions() {
+    return this.props.classes.map((cl) => ({ value: cl.id, label: cl.name }))
+  }
 
-    classOptions() {
-        return this.props.classes.map((cl) => {
-            return <option key={cl.id} value={cl.id}>{cl.name}</option>
-        })
+  createList() {
+    if (this.props.form.values.student_class) {
+      return this.props.form.values.student_class.map((obj, i) => (
+        <SelectField name={`student_class.${i}.class.id`} label={`Class ${i + 1}:`} placeholder="Class">
+          {this.classOptions()}
+        </SelectField>
+      ))
     }
+    return <div />
+  }
 
-    createList() {
-        var list = []
-        for (var i = 0; i < this.state.fieldNum; i++) {
-            list.push(<SelectField name={"class" + i} label={"Class " + (i + 1) + ":"} placeholder="Class">
-                <option></option>
-                {this.classOptions()}
-            </SelectField>)
-        }
-        return list
-    }
-
-    handleClick() {
-        this.setState({ fieldNum: this.state.fieldNum + 1 })
-    }
-
-    render() {
-        return (
-            <div>
-                {this.createList()}
-                <Button onClick={this.handleClick}>
-                    Add Class
-                </Button>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        {this.createList()}
+        <Button onClick={() => this.props.push({})}>
+          Add Class
+        </Button>
+      </div>
+    )
+  }
 }
 
-const mapStateToProps = state => {
-    return {
-        ...state.entities,
-    }
-}
+const mapStateToProps = (state) => ({
+  ...state.entities,
+})
 
 export default connect(
-    mapStateToProps, { ...classActions }
+  mapStateToProps, { ...classActions }
 )(StudentClass);
