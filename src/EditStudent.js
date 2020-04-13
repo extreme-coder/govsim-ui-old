@@ -49,7 +49,7 @@ class EditStudent extends React.Component {
 
   familyOptions() {
     return this.props.families.map((family) => {
-      return ({ value: family.id, label: family.name })
+      return ({ value: family.id, label: family.family_name })
     });
   }
 

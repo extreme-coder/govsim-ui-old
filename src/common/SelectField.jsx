@@ -1,41 +1,45 @@
 import React from "react";
 import { Form, InputGroup } from "react-bootstrap";
-import { Field } from "formik";
+import { useField, useFormikContext } from "formik";
 import Select from "react-select";
 
-const SelectField = ({
-  as,
-  md,
-  controlId,
-  label,
-  name,
-  type,
-  inputGroupPrepend,
-  children
-}) => {
-  return (
-    <Field
-      name={name}
-      render={({ field, form }) => {
-        const isValid = !form.errors[field.name];
-        const isInvalid = form.touched[field.name] && !isValid;
+const customStyles = {
+  container: provided => ({
+    ...provided,
+    width: '100%'
+  })
+};
 
-        return (
-          <Form.Group as={as} md={md} controlId={controlId}>
-            <Form.Label>{label}</Form.Label>
-            <InputGroup>
-              {inputGroupPrepend}
-              <Select options={children} />
-              <Form.Control.Feedback type="invalid">
-                {form.errors[field.name]}
-              </Form.Control.Feedback>
-            </InputGroup>
-          </Form.Group>
-        );
-      }}
-    />
+
+const SelectField = ({ ...props }) => {
+  const { setFieldValue } = useFormikContext();
+  const [field] = useField(props);
+  let selected = null;
+  if (field.value) {
+    selected = props.children.filter((obj) => (obj.value === field.value))[0];
+  }
+
+  return (
+    <Form.Group as={props.as} md={props.md} controlId={props.controlId}>
+      <Form.Label>{props.label}</Form.Label>
+      <InputGroup>
+        {props.inputGroupPrepend}
+        <Select
+          {...field}
+          {...props}
+          styles={customStyles}
+          options={props.children}
+          value={selected}
+          onChange={val => {
+            setFieldValue(field.name, val.value);
+          }}
+        />
+      </InputGroup>
+    </Form.Group>
   );
 };
+
+
 
 SelectField.defaultProps = {
   type: "select",
