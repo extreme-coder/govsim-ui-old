@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import TextField from './common/TextField';
 import SelectField from './common/SelectField';
 import FormWrapper from './common/FormWrapper';
-import PriceOption from './PriceOption';
+import PriceOptions from './PriceOptions';
 import CheckBox from './CheckBox';
 import * as actions from './actions/entity_actions';
 import { Formik, FieldArray } from "formik";
@@ -99,8 +99,9 @@ class AddClass extends React.Component {
                 <CheckBox name="friday"/>
                 <h7> Saturday</h7>
                 <CheckBox name="saturday"/>
+                <h5> </h5>
 
-                <FieldArray name="student_class" component={PriceOption} />
+                <FieldArray name="student_class" component={PriceOptions} />
                 <h6> </ h6>
 
                 <Button variant="primary" type="submit">
