@@ -9,7 +9,19 @@ import * as actions from './actions/entity_actions';
 import { Formik } from "formik";
 import 'react-quill/dist/quill.snow.css';
 
+let opt = [
+  { value: "teachers", label: "Teachers" },
+  { value: "students", label: "Students" },
+  { value: "all", label: "All" }
+];
+
+let opt2 = [
+  { value: "sent", label: "Now" },
+  { value: "created", label: "Later" },
+]
 class addEmail extends React.Component {
+
+
 
   saveEmail = (values) => {
     debugger;
@@ -36,9 +48,7 @@ class addEmail extends React.Component {
               <Form.Group controlId="formBasicName">
 
                 <SelectField name="to" label="To:" placeholder="Who You Want To Send To" >
-                  <option value="teachers">Teachers</option>
-                  <option value="students">Students</option>
-                  <option value="all">All</option>
+                  {opt}
                 </SelectField>
 
                 <TextField name="subject" label="Subject" placeholder="Enter Subject" />
@@ -46,8 +56,7 @@ class addEmail extends React.Component {
                 <RichField name="message" label="Message" />
 
                 <SelectField name="status" label="When To Send" placeholder="When Do You Want To Send It" >
-                  <option value="sent">Now</option>
-                  <option value="created">Later</option>
+                  {opt2}
                 </SelectField>
 
                 <Button variant="primary" type="submit">
