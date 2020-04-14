@@ -1,14 +1,14 @@
+import { FieldArray, Formik } from 'formik';
 import React from 'react';
-import {Form, Button} from 'react-bootstrap';
-import DateField from "./common/DateField";
+import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import TextField from './common/TextField';
-import SelectField from './common/SelectField';
-import FormWrapper from './common/FormWrapper';
-import PriceOptions from './PriceOptions';
-import CheckBox from './CheckBox';
 import * as actions from './actions/entity_actions';
-import { Formik, FieldArray } from "formik";
+import CheckBox from './CheckBox';
+import DateField from './common/DateField';
+import FormWrapper from './common/FormWrapper';
+import SelectField from './common/SelectField';
+import TextField from './common/TextField';
+import PriceOptions from './PriceOptions';
 
 
 class AddClass extends React.Component {
@@ -26,7 +26,6 @@ class AddClass extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.getEntities('teacher');
     this.props.getEntities('room');
     if (this.props.match.params.id !== 'new') {
@@ -44,15 +43,11 @@ class AddClass extends React.Component {
   }
 
   teacherOptions() {
-    return this.props.teachers.map((teacher) => {
-      return ({ value: teacher.id, label: teacher.name })
-    })
+    return this.props.teachers.map((teacher) => ({ value: teacher.id, label: teacher.name }))
   }
 
   roomOptions() {
-    return this.props.rooms.map((room) => {
-      return ({ value: room.id, label: room.name })
-    })
+    return this.props.rooms.map((room) => ({ value: room.id, label: room.name }))
   }
 
   render() {
@@ -72,37 +67,37 @@ class AddClass extends React.Component {
 
                 <DateField name="end_date" label="End Date" placeholder="Enter End Date" />
 
-                <SelectField name="teacher.id" label="Teacher" placeholder="Teacher" >
+                <SelectField name="teacher.id" label="Teacher" placeholder="Teacher">
                   {this.teacherOptions()}
                 </SelectField>
 
-                <SelectField name="assistant.id" label="Assistant" placeholder="Assistant" >
+                <SelectField name="assistant.id" label="Assistant" placeholder="Assistant">
                   {this.teacherOptions()}
                 </SelectField>
 
-                <SelectField name="room_for_class.id" label="Room" placeholder="Room" >
+                <SelectField name="room_for_class.id" label="Room" placeholder="Room">
                   {this.roomOptions()}
                 </SelectField>
 
                 <h5>Days Of class </h5>
                 <h7>Sunday</h7>
-                <CheckBox name="sunday"/>
+                <CheckBox name="sunday" />
                 <h7> Monday</h7>
-                <CheckBox name="monday"/>
+                <CheckBox name="monday" />
                 <h7> Tuesday</h7>
-                <CheckBox name="tuesday"/>
+                <CheckBox name="tuesday" />
                 <h7> Wenesday</h7>
-                <CheckBox name="wenesday"/>
+                <CheckBox name="wenesday" />
                 <h7> Thursday</h7>
-                <CheckBox name="thursday"/>
+                <CheckBox name="thursday" />
                 <h7> Friday</h7>
-                <CheckBox name="friday"/>
+                <CheckBox name="friday" />
                 <h7> Saturday</h7>
-                <CheckBox name="saturday"/>
+                <CheckBox name="saturday" />
                 <h5> </h5>
 
-                <FieldArray name="student_class" component={PriceOptions} />
-                <h6> </ h6>
+                <FieldArray name="price_option" component={PriceOptions} />
+                <h6> </h6>
 
                 <Button variant="primary" type="submit">
                   Save
@@ -116,12 +111,10 @@ class AddClass extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    class: state.entities.class,
-    ...state.entities
-  }
-}
+const mapStateToProps = (state) => ({
+  class: state.entities.class,
+  ...state.entities
+})
 
 export default connect(
   mapStateToProps, actions

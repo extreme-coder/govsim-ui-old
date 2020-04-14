@@ -1,10 +1,10 @@
-import React from "react";
-import { Form, InputGroup } from "react-bootstrap";
-import { useField, useFormikContext } from "formik";
-import Select from "react-select";
+import { useField, useFormikContext } from 'formik';
+import React from 'react';
+import { Form, InputGroup } from 'react-bootstrap';
+import Select from 'react-select';
 
 const customStyles = {
-  container: provided => ({
+  container: (provided) => ({
     ...provided,
     width: '100%'
   })
@@ -30,7 +30,7 @@ const SelectField = ({ ...props }) => {
           styles={customStyles}
           options={props.children}
           value={selected}
-          onChange={val => {
+          onChange={(val) => {
             setFieldValue(field.name, val.value);
           }}
         />
@@ -40,9 +40,8 @@ const SelectField = ({ ...props }) => {
 };
 
 
-
 SelectField.defaultProps = {
-  type: "select",
+  type: 'select',
   inputGroupPrepend: null
 };
 

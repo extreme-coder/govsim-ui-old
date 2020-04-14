@@ -1,0 +1,9 @@
+{
+    "eslint.format.enable": true,
+    "javascript.format.enable": true,
+    "editor.codeActionsOnSaveTimeout": 500,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll.eslint": true
+    },
+}
