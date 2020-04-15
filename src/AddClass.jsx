@@ -81,19 +81,19 @@ class AddClass extends React.Component {
 
                 <h5>Days Of class </h5>
                 <h7>Sunday</h7>
-                <CheckBox name="sunday" />
+                <CheckBox name="days_of_week.sunday" />
                 <h7> Monday</h7>
-                <CheckBox name="monday" />
+                <CheckBox name="days_of_week.monday" />
                 <h7> Tuesday</h7>
-                <CheckBox name="tuesday" />
+                <CheckBox name="days_of_week.tuesday" />
                 <h7> Wenesday</h7>
-                <CheckBox name="wenesday" />
+                <CheckBox name="days_of_week.wenesday" />
                 <h7> Thursday</h7>
-                <CheckBox name="thursday" />
+                <CheckBox name="days_of_week.thursday" />
                 <h7> Friday</h7>
-                <CheckBox name="friday" />
+                <CheckBox name="days_of_week.friday" />
                 <h7> Saturday</h7>
-                <CheckBox name="saturday" />
+                <CheckBox name="days_of_week.saturday" />
                 <h5> </h5>
 
                 <FieldArray name="price_option" component={PriceOptions} />

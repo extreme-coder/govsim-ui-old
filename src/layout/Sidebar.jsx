@@ -1,15 +1,12 @@
+import { faAngleLeft, faLaughWink, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Router, Route, Link, History, withRouter } from 'react-router-dom';
-
 import { Collapse } from 'react-bootstrap';
-import '../js/sb-admin-2.js';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faLaughWink, faTachometerAlt, faArrowLeft, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { Link, withRouter } from 'react-router-dom';
+import '../js/sb-admin-2';
 
 
 class Sidebar extends React.Component {
-
   constructor(props, context) {
     super(props, context);
 
@@ -20,8 +17,7 @@ class Sidebar extends React.Component {
         submenu: this.routeActive(['submenu'])
       }
     };
-
-  };
+  }
 
   componentDidMount() {
 
@@ -37,16 +33,13 @@ class Sidebar extends React.Component {
 
   routeActive(paths) {
     paths = Array.isArray(paths) ? paths : [paths];
-    if (paths.indexOf(this.props.location.pathname.replace('/', '')) > -1)
-      return true;
+    if (paths.indexOf(this.props.location.pathname.replace('/', '')) > -1) { return true; }
     return false;
   }
 
   toggleItemCollapse(stateName) {
-    var newCollapseState = {};
-    for (let c in this.state.collapse) {
-      if (this.state.collapse[c] === true && c !== stateName)
-        this.state.collapse[c] = false;
+    for (const c in this.state.collapse) {
+      if (this.state.collapse[c] === true && c !== stateName) { this.state.collapse[c] = false; }
     }
     this.setState({
       collapse: {
@@ -57,7 +50,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <aside >
+      <aside>
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
           <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -70,9 +63,11 @@ class Sidebar extends React.Component {
           <hr className="sidebar-divider my-0" />
 
           <li className="nav-item active">
-            <a className="nav-link" href="index.html">
+            <a className="nav-link" href="/dashboard">
               <FontAwesomeIcon icon={faTachometerAlt} size="lg" />
-              <span> Dashboard</span></a>
+              <span> Dashboard</span>
+
+            </a>
           </li>
 
           <hr className="sidebar-divider" />
@@ -80,16 +75,16 @@ class Sidebar extends React.Component {
 
           <div className="sidebar-heading">
             Student Management
-            </div>
+          </div>
           <li className="nav-item">
             <Link className="nav-link" to="/students">
-              <i className="fas fa-fw fa-chart-area"></i>
+              <i className="fas fa-fw fa-chart-area" />
               <span>Students </span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/families">
-              <i className="fas fa-fw fa-chart-area"></i>
+              <i className="fas fa-fw fa-chart-area" />
               <span>Families </span>
             </Link>
           </li>
@@ -99,29 +94,29 @@ class Sidebar extends React.Component {
 
           <div className="sidebar-heading">
             Configuration
-            </div>
+          </div>
           <li className="nav-item">
             <Link className="nav-link" to="/teachers">
-              <i className="fas fa-fw fa-chart-area"></i>
+              <i className="fas fa-fw fa-chart-area" />
               <span>Teachers </span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/classes">
-              <i className="fas fa-fw fa-chart-area"></i>
+              <i className="fas fa-fw fa-chart-area" />
               <span>Classes </span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/rooms">
-              <i className="fas fa-fw fa-chart-area"></i>
+              <i className="fas fa-fw fa-chart-area" />
               <span>Rooms </span>
             </Link>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" onClick={this.toggleItemCollapse.bind(this, 'components')} >
-              <i className="fas fa-fw fa-cog"></i>
+            <a className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" onClick={this.toggleItemCollapse.bind(this, 'components')}>
+              <i className="fas fa-fw fa-cog" />
               <span>Components</span>
             </a>
             <Collapse in={this.state.collapse.components} timeout={100}>
@@ -136,18 +131,17 @@ class Sidebar extends React.Component {
           </li>
 
 
-
           <hr className="sidebar-divider" />
 
 
           <div className="sidebar-heading">
             Communication
-            </div>
+          </div>
 
 
           <li className="nav-item">
             <Link className="nav-link" to="/email_messages/new">
-              <i className="fas fa-fw fa-chart-area"></i>
+              <i className="fas fa-fw fa-chart-area" />
               <span>Compose Email </span>
             </Link>
           </li>
@@ -155,15 +149,17 @@ class Sidebar extends React.Component {
 
           <li className="nav-item">
             <a className="nav-link" href="tables.html">
-              <i className="fas fa-fw fa-table"></i>
-              <span>Tables</span></a>
+              <i className="fas fa-fw fa-table" />
+              <span>Tables</span>
+
+            </a>
           </li>
 
           <hr className="sidebar-divider" />
 
           <li className="nav-item">
             <Link className="nav-link" to="/logout">
-              <i className="fas fa-fw fa-table"></i>
+              <i className="fas fa-fw fa-table" />
               <span>Logout</span>
             </Link>
           </li>
@@ -172,7 +168,7 @@ class Sidebar extends React.Component {
 
 
           <div className="text-center d-none d-md-inline">
-            <button className="rounded-circle border-0" id="sidebarToggle" >
+            <button className="rounded-circle border-0" id="sidebarToggle">
               <FontAwesomeIcon icon={faAngleLeft} size="lg" />
             </button>
           </div>
@@ -181,8 +177,6 @@ class Sidebar extends React.Component {
       </aside>
     );
   }
-
 }
 
 export default withRouter(Sidebar);
-
