@@ -1,13 +1,13 @@
 import { FieldArray, Formik } from 'formik';
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, FormLabel, InputGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as actions from './actions/entity_actions';
-import CheckBox from './CheckBox';
 import DateField from './common/DateField';
 import FormWrapper from './common/FormWrapper';
 import SelectField from './common/SelectField';
 import TextField from './common/TextField';
+import ToggleButton from './common/ToggleButton';
 import PriceOptions from './PriceOptions';
 
 
@@ -79,22 +79,24 @@ class AddClass extends React.Component {
                   {this.roomOptions()}
                 </SelectField>
 
-                <h5>Days Of class </h5>
-                <h7>Sunday</h7>
-                <CheckBox name="days_of_week.sunday" />
-                <h7> Monday</h7>
-                <CheckBox name="days_of_week.monday" />
-                <h7> Tuesday</h7>
-                <CheckBox name="days_of_week.tuesday" />
-                <h7> Wenesday</h7>
-                <CheckBox name="days_of_week.wenesday" />
-                <h7> Thursday</h7>
-                <CheckBox name="days_of_week.thursday" />
-                <h7> Friday</h7>
-                <CheckBox name="days_of_week.friday" />
-                <h7> Saturday</h7>
-                <CheckBox name="days_of_week.saturday" />
-                <h5> </h5>
+
+                <FormLabel>Days Of class</FormLabel>
+                <InputGroup>
+                  <ToggleButton name="days_of_week.sunday" label="Su" />
+
+                  <ToggleButton name="days_of_week.monday" label="Mo" />
+
+                  <ToggleButton name="days_of_week.tuesday" label="Tu" />
+
+                  <ToggleButton name="days_of_week.wenesday" label="We" />
+
+                  <ToggleButton name="days_of_week.thursday" label="Th" />
+
+                  <ToggleButton name="days_of_week.friday" label="Fr" />
+
+                  <ToggleButton name="days_of_week.saturday" label="Sa" />
+                </InputGroup>
+
 
                 <FieldArray name="price_option" component={PriceOptions} />
                 <h6> </h6>
