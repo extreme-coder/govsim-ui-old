@@ -33,7 +33,7 @@ export const addEntity = createAction('ADD_ENTITY', (name, data, next) => ({
   }
 }));
 
-export const updateEntity = createAction('UPDATE_ENTITY', (name, data) => ({
+export const updateEntity = createAction('UPDATE_ENTITY', (name, data, next) => ({
   request: {
     url: `/${pluralize(name.replace('_', '-'))}/${data.id}`,
     method: 'PUT',
@@ -42,7 +42,11 @@ export const updateEntity = createAction('UPDATE_ENTITY', (name, data) => ({
   },
   options: {
     onSuccess({ getState, dispatch, response }) {
-      window.location = `/${pluralize(name)}`;
+      if (next) {
+        window.location = next;
+      } else {
+        window.location = `/${pluralize(name)}`;
+      }
     }
   }
 }));

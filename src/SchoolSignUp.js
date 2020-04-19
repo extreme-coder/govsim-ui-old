@@ -1,10 +1,10 @@
+import { Formik } from 'formik';
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { connect } from 'react-redux';
-import { Formik } from "formik";
-import TextField from './common/TextField';
 import * as actions from './actions/entity_actions';
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+import TextField from './common/TextField';
 
 class SchoolSignUp extends React.Component {
   schoolSignUp = (values) => {
@@ -14,7 +14,7 @@ class SchoolSignUp extends React.Component {
     if (this.props.match.params.id === 'new') {
       this.props.addEntity('school', values, '/dashboard')
     } else {
-      this.props.updateEntity('school', values)
+      this.props.updateEntity('school', values, '/dashboard')
     }
   }
 
@@ -51,18 +51,20 @@ class SchoolSignUp extends React.Component {
                 <h6>Country</h6>
                 <CountryDropdown
                   value={this.state.country}
-                  onChange={(val) => this.selectCountry(val)} />
+                  onChange={(val) => this.selectCountry(val)}
+                />
                 <h6>State</h6>
                 <RegionDropdown
                   country={this.state.country}
                   value={this.state.region}
-                  onChange={(val) => this.selectRegion(val)} />
+                  onChange={(val) => this.selectRegion(val)}
+                />
                 <TextField name="address.city" label="City" placeholder="Enter City" />
                 <TextField name="address.postal_code" label="Postal Code" placeholder="Enter Postal Code" />
 
                 <Button variant="primary" type="submit">
                   Save
-              </Button>
+                </Button>
               </Form.Group>
             </Form>
           )}
@@ -73,11 +75,9 @@ class SchoolSignUp extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    school: state.entities.school
-  }
-}
+const mapStateToProps = (state) => ({
+  school: state.entities.school
+})
 
 export default connect(
   mapStateToProps, actions

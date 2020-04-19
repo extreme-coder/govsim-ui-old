@@ -1,10 +1,10 @@
-import { faAngleLeft, faLaughWink, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Collapse } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import '../js/sb-admin-2';
-
+import faLaughWink from './logo.png';
 
 class Sidebar extends React.Component {
   constructor(props, context) {
