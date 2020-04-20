@@ -1,11 +1,10 @@
+import { Formik } from 'formik';
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Formik } from "formik";
-import TextField from './common/TextField';
-import SelectField from './common/SelectField';
-import FormWrapper from './common/FormWrapper';
 import * as actions from './actions/entity_actions';
+import FormWrapper from './common/FormWrapper';
+import TextField from './common/TextField';
 
 class AddRoom extends React.Component {
   constructor(props) {
@@ -35,6 +34,7 @@ class AddRoom extends React.Component {
     }
     this.setNew(this.props.match.params.id)
   }
+
   render() {
     return (
       <FormWrapper title="Room" isNew={this.isNew}>
@@ -47,7 +47,7 @@ class AddRoom extends React.Component {
 
                 <Button variant="primary" type="submit">
                   Save
-                    </Button>
+                </Button>
               </Form.Group>
             </Form>
           )}
@@ -57,11 +57,9 @@ class AddRoom extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    room: state.entities.room
-  }
-}
+const mapStateToProps = (state) => ({
+  room: state.entities.room
+})
 
 export default connect(
   mapStateToProps, actions

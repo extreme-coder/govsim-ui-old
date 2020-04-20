@@ -1,26 +1,26 @@
+import { FieldArray, Formik } from 'formik';
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import DateField from "./common/DateField";
+import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import TextField from './common/TextField';
-import SelectField from './common/SelectField';
-import FormWrapper from './common/FormWrapper';
-import StudentClass from './StudentClass';
 import * as actions from './actions/entity_actions';
-
-import { Formik, Field, FieldArray } from 'formik';
+import DateField from './common/DateField';
+import FamilyFields from './common/FamilyFields';
+import FormWrapper from './common/FormWrapper';
+import SelectField from './common/SelectField';
+import TextField from './common/TextField';
+import StudentClass from './StudentClass';
 
 
 class EditStudent extends React.Component {
   constructor(props) {
     super(props)
     this.isNew = false
+    this.handleClick = this.handleClick.bind(this)
+    this.state = { familyFieldOpen: false }
   }
 
   classOptions() {
-    return this.props.classes.map((clas) => {
-      return ({ value: clas.id, label: clas.name })
-    });
+    return this.props.classes.map((clas) => ({ value: clas.id, label: clas.name }));
   }
 
   saveStudent = (values) => {
@@ -48,13 +48,14 @@ class EditStudent extends React.Component {
   }
 
   familyOptions() {
-    return this.props.families.map((family) => {
-      return ({ value: family.id, label: family.family_name })
-    });
+    return this.props.families.map((family) => ({ value: family.id, label: family.family_name }));
+  }
+
+  handleClick() {
+    this.setState({ familyFieldOpen: true })
   }
 
   render() {
-
     return (
       <FormWrapper title="Student" isNew={this.isNew}>
         <Formik enableReinitialize onSubmit={this.saveStudent} initialValues={this.props.student}>
@@ -73,15 +74,32 @@ class EditStudent extends React.Component {
 
                   <TextField name="password" label="Password" placeholder="Password" />
 
-                  <SelectField name="family.id" label="Family" placeholder="Family" >
-                    {this.familyOptions()}
-                  </SelectField>
-
                   <FieldArray name="student_class" component={StudentClass} />
-                  <h6> </ h6>
+                  <h6> </h6>
+
+                  {(() => {
+                    if (this.state.familyFieldOpen) {
+                      return <FamilyFields parent={this} />;
+                    }
+                    return (
+                      <div>
+                        <SelectField name="family.id" label="Family" placeholder="Family">
+                          {this.familyOptions()}
+                        </SelectField>
+
+                        <Button variant="primary" onClick={this.handleClick}>
+                          Add New Family
+                        </Button>
+
+                        <h6> </h6>
+                      </div>
+                    )
+                  })()}
+
+
                   <Button variant="primary" type="submit">
                     Save
-                    </Button>
+                  </Button>
                 </Form.Group>
               </Form>
 
@@ -93,12 +111,10 @@ class EditStudent extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    student: state.entities.student,
-    ...state.entities
-  }
-}
+const mapStateToProps = (state) => ({
+  student: state.entities.student,
+  ...state.entities
+})
 
 export default connect(
   mapStateToProps, actions
