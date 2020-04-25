@@ -1,8 +1,8 @@
 import { useField, useFormikContext } from 'formik';
 import React from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import TimePicker from 'react-time-picker';
 
 const DateField = ({ ...props }) => {
   const { setFieldValue } = useFormikContext();
@@ -12,12 +12,12 @@ const DateField = ({ ...props }) => {
       <Form.Label>{props.label}</Form.Label>
       <InputGroup>
         {props.inputGroupPrepend}
-        <DatePicker
+        <TimePicker
           {...field}
           {...props}
           selected={(field.value && new Date(field.value)) || null}
           onChange={(val) => {
-            setFieldValue(field.name, val);
+            setFieldValue(field.name, `${val}:00`);
           }}
         />
       </InputGroup>

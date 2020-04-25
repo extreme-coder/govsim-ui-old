@@ -7,6 +7,7 @@ import DateField from './common/DateField';
 import FormWrapper from './common/FormWrapper';
 import SelectField from './common/SelectField';
 import TextField from './common/TextField';
+import TimeField from './common/TimeField';
 import ToggleButton from './common/ToggleButton';
 import PriceOptions from './PriceOptions';
 
@@ -61,9 +62,9 @@ class AddClass extends React.Component {
               <Form.Group controlId="formBasicName">
                 <TextField name="name" label="Name" placeholder="Enter Name" />
 
-                <TextField name="start_time" label="StartTime" placeholder="Enter Start Time" />
+                <TimeField name="start_time" label="StartTime" placeholder="Enter Start Time" />
 
-                <TextField name="end_time" label="End Time" placeholder="Enter End Time" />
+                <TimeField name="end_time" label="End Time" placeholder="Enter End Time" />
 
                 <DateField name="start_date" label="Start Date" placeholder="Enter Start Date" />
 
