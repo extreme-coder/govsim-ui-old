@@ -20,7 +20,13 @@ class PriceOptions extends React.Component {
   createList() {
     if (this.props.form.values.price_option) {
       return this.props.form.values.price_option.map((obj, i) => (
-        <PriceOption name={`price_option.${i}`} label={`Price Option ${i + 1}`} index={i} values={this.props.form.values.price_option[i]} />
+        <div>
+          <PriceOption name={`price_option.${i}`} label={`Price Option ${i + 1}`} index={i} values={this.props.form.values.price_option[i]} />
+          <Button onClick={() => this.props.remove(i)}>
+            -
+          </Button>
+          <h6> </h6>
+        </div>
       ))
     }
     return <div />

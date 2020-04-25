@@ -24,7 +24,7 @@ class StudentClass extends React.Component {
           <Button onClick={() => this.props.remove(i)}>
             -
           </Button>
-          <h6 />
+          <h6> </h6>
         </div>
       ))
     }
