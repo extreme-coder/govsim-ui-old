@@ -13,12 +13,19 @@ class StudentClass extends React.Component {
     return this.props.classes.map((cl) => ({ value: cl.id, label: cl.name }))
   }
 
+
   createList() {
     if (this.props.form.values.student_class) {
       return this.props.form.values.student_class.map((obj, i) => (
-        <SelectField name={`student_class.${i}.class.id`} label={`Class ${i + 1}:`} placeholder="Class">
-          {this.classOptions()}
-        </SelectField>
+        <div>
+          <SelectField name={`student_class.${i}.class.id`} label={`Class ${i + 1}:`} placeholder="Class">
+            {this.classOptions()}
+          </SelectField>
+          <Button onClick={() => this.props.remove(i)}>
+            -
+          </Button>
+          <h6> </h6>
+        </div>
       ))
     }
     return <div />
