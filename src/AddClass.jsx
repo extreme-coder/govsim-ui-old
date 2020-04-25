@@ -30,6 +30,8 @@ class AddClass extends React.Component {
     this.props.getEntities('room');
     if (this.props.match.params.id !== 'new') {
       this.props.getEntity('class', this.props.match.params.id);
+    } else {
+      this.props.class.price_option = [{}]
     }
     this.setNew(this.props.match.params.id)
   }
