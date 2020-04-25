@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import AddClass from './AddClass';
 import AddFamily from './addFamily';
+import AddLevel from './AddLevel';
 import AddRoom from './AddRoom';
 import AddTeacher from './AddTeacher';
 import Classes from './Classes';
@@ -10,6 +11,7 @@ import EditStudent from './EditStudent';
 import Emails from './emails';
 import Families from './families';
 import DashboardRoute from './layout/DashboardRoute';
+import Levels from './levels';
 import Login from './login';
 import Logout from './logout';
 import Dashboard from './pages/DashboardHome';
@@ -41,6 +43,10 @@ const Routes = () => (
     <DashboardRoute path="/rooms/:id" component={AddRoom} />
     <DashboardRoute path="/rooms/new" component={AddRoom} />
     <DashboardRoute path="/rooms" component={Rooms} />
+
+    <DashboardRoute path="/levels/:id" component={AddLevel} />
+    <DashboardRoute path="/levels/new" component={AddLevel} />
+    <DashboardRoute path="/levels" component={Levels} />
 
     <DashboardRoute path="/teachers/:id" component={AddTeacher} />
     <DashboardRoute path="/teachers/new" component={AddTeacher} />

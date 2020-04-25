@@ -88,6 +88,12 @@ class Sidebar extends React.Component {
               <span>Families </span>
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/levels">
+              <i className="fas fa-fw fa-chart-area" />
+              <span>Levels </span>
+            </Link>
+          </li>
 
           <hr className="sidebar-divider" />
 
