@@ -1,32 +1,28 @@
 import React from 'react';
-import DataTable from './common/DataTable'
-import * as actions from './actions/entity_actions';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import * as actions from './actions/entity_actions';
+import DataTable from './common/DataTable';
 
 
 class Teachers extends React.Component {
-
-
   get columns() {
     return [{
-      name: "Name",
-      accessor: "name"
+      name: 'Name',
+      accessor: 'name'
     }, {
-      id: "classes",
-      name: "Classes",
-      accessor: function (row) {
-        let classNames = row.classes.map((cl) => {
-          return cl.name;
-        })
+      id: 'classes',
+      name: 'Classes',
+      accessor(row) {
+        const classNames = row.classes.map((cl) => cl.name)
         return classNames.join(', ')
       }
     }, {
-      id: "edit",
-      name: "Edit",
-      accessor: function (row) {
-        let link = "/teachers/" + row.id
-        return <Link to={link} style={{ color: "Black" }}>Edit</Link>
+      id: 'edit',
+      name: 'Edit',
+      accessor(row) {
+        const link = `/teachers/${row.id}`
+        return <Link to={link} style={{ color: 'Black' }}>Edit</Link>
       }
     }];
   }
@@ -48,11 +44,9 @@ class Teachers extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    ...state.entities
-  };
-}
+const mapStateToProps = (state) => ({
+  ...state.entities
+})
 
 export default connect(
   mapStateToProps, actions

@@ -16,6 +16,7 @@ import Login from './login';
 import Logout from './logout';
 import Dashboard from './pages/DashboardHome';
 import SignupPage from './pages/SignupPage';
+import TeacherAllocations from './pages/TeacherAllocations';
 import Rooms from './Rooms';
 import SchoolSignUp from './SchoolSignUp';
 import Students from './Students';
@@ -67,6 +68,7 @@ const Routes = () => (
     <DashboardRoute path="/email_messages/new" component={AddEmail} />
     <DashboardRoute path="/email_messages" component={Emails} />
 
+    <DashboardRoute path="/teacher_allocations" component={TeacherAllocations} />
 
     <DashboardRoute path="/dashboard" component={Dashboard} />
 
