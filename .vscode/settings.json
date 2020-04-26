@@ -3,7 +3,7 @@
     "javascript.format.enable": true,
     "editor.codeActionsOnSaveTimeout": 500,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true,
+      "source.organizeImports": false,
       "source.fixAll.eslint": true
     },
 }
