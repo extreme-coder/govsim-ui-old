@@ -44,11 +44,16 @@ class EditStudent extends React.Component {
       this.props.getEntity('student', this.props.match.params.id);
     }
     this.props.getEntities('family');
+    this.props.getEntities('level');
     this.setNew(this.props.match.params.id)
   }
 
   familyOptions() {
     return this.props.families.map((family) => ({ value: family.id, label: family.family_name }));
+  }
+
+  levelOptions() {
+    return this.props.levels.map((level) => ({ value: level.id, label: level.name }))
   }
 
   handleClick() {
@@ -73,6 +78,10 @@ class EditStudent extends React.Component {
                   <TextField name="email" label="Email" placeholder="Email" />
 
                   <TextField name="password" label="Password" placeholder="Password" />
+
+                  <SelectField name="level.id" label="Level" placeholder="Level">
+                    {this.levelOptions()}
+                  </SelectField>
 
                   <FieldArray name="student_class" component={StudentClass} />
                   <h6> </h6>

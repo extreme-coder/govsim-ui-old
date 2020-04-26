@@ -1,44 +1,44 @@
 import React from 'react';
-import DataTable from './common/DataTable'
-import * as actions from './actions/entity_actions';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import * as actions from './actions/entity_actions';
+import DataTable from './common/DataTable';
 
 class Classes extends React.Component {
   get columns() {
     return [{
-      name: "Name",
-      accessor: "name"
+      name: 'Name',
+      accessor: 'name'
     }, {
-      name: "Start Time",
-      accessor: "start_time"
+      name: 'Start Time',
+      accessor: 'start_time'
     }, {
-      name: "End Time",
-      accessor: "end_time"
+      name: 'End Time',
+      accessor: 'end_time'
     }, {
-      name: "Start Date",
-      accessor: "start_date"
+      name: 'Start Date',
+      accessor: 'start_date'
     }, {
-      name: "End Date",
-      accessor: "end_date"
+      name: 'End Date',
+      accessor: 'end_date'
     }, {
-      name: "Room",
-      accessor: "room_for_class"
+      name: 'Room',
+      accessor: 'room_for_class'
     }, {
-      name: "Teacher",
-      accessor: "teacher.name"
+      name: 'Teacher',
+      accessor: 'teacher.name'
     }, {
-      name: "Assistant",
-      accessor: "assistant.name"
+      name: 'Assistant',
+      accessor: 'assistant.name'
     }, {
-      name: "Class Days",
-      accessor: "days_of_class"
+      name: 'Class Days',
+      accessor: 'days_of_class'
     }, {
-      id: "edit",
-      name: "Edit",
-      accessor: function (row) {
-        let link = "/classes/" + row.id
-        return <Link to={link} style={{ color: "Black" }}>Edit</Link>
+      id: 'edit',
+      name: 'Edit',
+      accessor(row) {
+        const link = `/classes/${row.id}`
+        return <Link to={link} style={{ color: 'Black' }}>Edit</Link>
       }
     }];
   }
@@ -59,11 +59,9 @@ class Classes extends React.Component {
     )
   }
 }
-const mapStateToProps = state => {
-  return {
-    ...state.entities
-  };
-}
+const mapStateToProps = (state) => ({
+  ...state.entities
+})
 
 export default connect(
   mapStateToProps, actions
