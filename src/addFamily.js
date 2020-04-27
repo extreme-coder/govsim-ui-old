@@ -1,16 +1,20 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Formik } from "formik";
-import TextField from './common/TextField';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import FamilyFields from './common/FamilyFields';
 import FormWrapper from './common/FormWrapper';
 import * as actions from './actions/entity_actions';
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+
+const AddFamilySchema = Yup.object().shape({
+  family_name: Yup.string()
+    .required('Required'),
+});
 
 class AddFamily extends React.Component {
   saveFamily = (values) => {
-    if (!values.address){
+    if (!values.address) {
       values.address = {}
     }
     values.address.country = this.state.country
@@ -28,11 +32,10 @@ class AddFamily extends React.Component {
     } else {
       this.isNew = false
     }
-    debugger;
   }
 
   componentDidMount() {
-    if (this.props.match.params.id != 'new') {
+    if (this.props.match.params.id !== 'new') {
       this.props.getEntity('family', this.props.match.params.id);
     }
     this.setNew(this.props.match.params.id)
@@ -55,7 +58,7 @@ class AddFamily extends React.Component {
   render() {
     return (
       <FormWrapper title="Family" isNew={this.isNew}>
-        <Formik enableReinitialize onSubmit={this.saveFamily} initialValues={this.props.family}>
+        <Formik enableReinitialize validationSchema={AddFamilySchema} onSubmit={this.saveFamily} initialValues={{ family_name: '' }}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">
@@ -74,11 +77,9 @@ class AddFamily extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    family: state.entities.family
-  }
-}
+const mapStateToProps = (state) => ({
+  family: state.entities.family
+})
 
 export default connect(
   mapStateToProps, actions

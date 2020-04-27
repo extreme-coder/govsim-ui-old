@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar } from 'react-big-calendar';
+import { Calendar, Views } from 'react-big-calendar';
 import { connect } from 'react-redux';
 import * as actions from '../actions/entity_actions';
 

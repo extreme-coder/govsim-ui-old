@@ -2,14 +2,19 @@ import { FieldArray, Formik } from 'formik';
 import React from 'react';
 import { Button, Form, FormLabel, InputGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import * as Yup from 'yup';
 import * as actions from './actions/entity_actions';
 import DateField from './common/DateField';
 import FormWrapper from './common/FormWrapper';
 import SelectField from './common/SelectField';
 import TextField from './common/TextField';
-import TimeField from './common/TimeField';
 import ToggleButton from './common/ToggleButton';
 import PriceOptions from './PriceOptions';
+
+const AddClassSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('Required'),
+});
 
 
 class AddClass extends React.Component {
@@ -56,15 +61,15 @@ class AddClass extends React.Component {
   render() {
     return (
       <FormWrapper title="Class" isNew={this.isNew}>
-        <Formik enableReinitialize onSubmit={this.saveClass} initialValues={this.props.class}>
+        <Formik enableReinitialize validationSchema={AddClassSchema} onSubmit={this.saveClass} initialValues={{ name: '' }}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">
                 <TextField name="name" label="Name" placeholder="Enter Name" />
 
-                <TimeField name="start_time" label="StartTime" placeholder="Enter Start Time" />
+                <TextField name="start_time" label="StartTime" placeholder="Enter Start Time" />
 
-                <TimeField name="end_time" label="End Time" placeholder="Enter End Time" />
+                <TextField name="end_time" label="End Time" placeholder="Enter End Time" />
 
                 <DateField name="start_date" label="Start Date" placeholder="Enter Start Date" />
 

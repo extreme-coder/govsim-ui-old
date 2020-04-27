@@ -2,9 +2,15 @@ import { Formik } from 'formik';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import * as Yup from 'yup';
 import * as actions from './actions/entity_actions';
 import FormWrapper from './common/FormWrapper';
 import TextField from './common/TextField';
+
+const AddLevelSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('Required'),
+});
 
 class AddLevel extends React.Component {
   constructor(props) {
@@ -38,7 +44,7 @@ class AddLevel extends React.Component {
   render() {
     return (
       <FormWrapper title="Level" isNew={this.isNew}>
-        <Formik enableReinitialize onSubmit={this.saveLevel} initialValues={this.props.level}>
+        <Formik enableReinitialize validationSchema={AddLevelSchema} onSubmit={this.saveLevel} initialValues={{ name: '' }}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">

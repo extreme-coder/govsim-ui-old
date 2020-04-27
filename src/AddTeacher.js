@@ -1,10 +1,18 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Formik } from "formik";
+import { Formik } from 'formik';
 import { connect } from 'react-redux';
+import * as Yup from 'yup';
 import TextField from './common/TextField';
 import FormWrapper from './common/FormWrapper';
 import * as actions from './actions/entity_actions';
+
+const AddTeacherSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('Required'),
+  email: Yup.string()
+    .required('Required'),
+});
 
 class AddTeacher extends React.Component {
   constructor(props) {
@@ -21,7 +29,7 @@ class AddTeacher extends React.Component {
   }
 
   setNew(id) {
-    if (id == 'new') {
+    if (id === 'new') {
       this.isNew = true
     } else {
       this.isNew = false
@@ -38,7 +46,7 @@ class AddTeacher extends React.Component {
   render() {
     return (
       <FormWrapper title="Teacher" isNew={this.isNew}>
-        <Formik enableReinitialize onSubmit={this.saveTeacher} initialValues={this.props.teacher}>
+        <Formik validationSchema={AddTeacherSchema} onSubmit={this.saveTeacher} initialValues={{ name: '', email: '' }}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">
@@ -55,13 +63,10 @@ class AddTeacher extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    teacher: state.entities.teacher
-  }
-}
+const mapStateToProps = (state) => ({
+  teacher: state.entities.teacher
+})
 
 export default connect(
   mapStateToProps, actions
 )(AddTeacher);
-
