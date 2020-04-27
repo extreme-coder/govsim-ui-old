@@ -61,7 +61,7 @@ class AddClass extends React.Component {
   render() {
     return (
       <FormWrapper title="Class" isNew={this.isNew}>
-        <Formik enableReinitialize validationSchema={AddClassSchema} onSubmit={this.saveClass} initialValues={{ name: '' }}>
+        <Formik enableReinitialize validationSchema={AddClassSchema} onSubmit={this.saveClass} initialValues={this.props.class}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">

@@ -58,7 +58,7 @@ class AddFamily extends React.Component {
   render() {
     return (
       <FormWrapper title="Family" isNew={this.isNew}>
-        <Formik enableReinitialize validationSchema={AddFamilySchema} onSubmit={this.saveFamily} initialValues={{ family_name: '' }}>
+        <Formik enableReinitialize validationSchema={AddFamilySchema} onSubmit={this.saveFamily} initialValues={this.props.family}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">

@@ -46,7 +46,7 @@ class AddTeacher extends React.Component {
   render() {
     return (
       <FormWrapper title="Teacher" isNew={this.isNew}>
-        <Formik validationSchema={AddTeacherSchema} onSubmit={this.saveTeacher} initialValues={{ name: '', email: '' }}>
+        <Formik validationSchema={AddTeacherSchema} onSubmit={this.saveTeacher} initialValues={this.props.teacher}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">

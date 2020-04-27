@@ -44,7 +44,7 @@ class AddRoom extends React.Component {
   render() {
     return (
       <FormWrapper title="Room" isNew={this.isNew}>
-        <Formik validationSchema={AddRoomSchema} onSubmit={this.saveRoom} initialValues={{ name: '' }}>
+        <Formik enableReinitialize validationSchema={AddRoomSchema} onSubmit={this.saveRoom} initialValues={this.props.room}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">

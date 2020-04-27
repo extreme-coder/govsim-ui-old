@@ -70,7 +70,7 @@ class EditStudent extends React.Component {
   render() {
     return (
       <FormWrapper title="Student" isNew={this.isNew}>
-        <Formik enableReinitialize validationSchema={EditStudentSchema} onSubmit={this.saveStudent} initialValues={{ first_name: '', email: '' }}>
+        <Formik enableReinitialize validationSchema={EditStudentSchema} onSubmit={this.saveStudent} initialValues={this.props.student}>
           {(props) => (
             <div>
               <Form noValidate onSubmit={props.handleSubmit}>

@@ -44,7 +44,7 @@ class AddLevel extends React.Component {
   render() {
     return (
       <FormWrapper title="Level" isNew={this.isNew}>
-        <Formik enableReinitialize validationSchema={AddLevelSchema} onSubmit={this.saveLevel} initialValues={{ name: '' }}>
+        <Formik enableReinitialize validationSchema={AddLevelSchema} onSubmit={this.saveLevel} initialValues={this.props.family}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">
