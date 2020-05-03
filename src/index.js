@@ -1,28 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 import thunkMiddleware from 'redux-thunk';
 
-import rootReducer from './reducers'
-import * as actions from './actions'
-import {alertActions} from './actions/alert'
-import { loadingBarMiddleware } from 'react-redux-loading-bar'
-import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import { loadingBarMiddleware, showLoading, hideLoading } from 'react-redux-loading-bar'
 
-import {createStore, applyMiddleware} from 'redux';
+
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
+import { alertActions } from './actions/alert'
+import * as actions from './actions'
+import rootReducer from './reducers'
+import * as serviceWorker from './serviceWorker';
+import App from './App';
 
 const client = axios.create({
-  baseURL:'http://localhost:1337/',
+  baseURL: 'http://localhost:1337/',
   responseType: 'json'
 });
 
 function errorHandler({ getState, dispatch, error }) {
-  //debugger;
+  // debugger;
   console.log(error.response)
   if (error.response.status === 401) {
     // auto logout if 401 response returned from api
@@ -37,18 +37,18 @@ const middlewareConfig = {
   onError: errorHandler,
   interceptors: {
     request: [
-      function ({getState, dispatch, getSourceAction}, req) {
-        console.log(req); //contains information about request object
+      function ({ getState, dispatch, getSourceAction }, req) {
+        console.log(req); // contains information about request object
         if (localStorage.getItem('user') != null) {
-          req.headers['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('user')).jwt
+          req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).jwt}`
         }
         dispatch(showLoading());
         return req;
       }
     ],
     response: [
-      function ({getState, dispatch, getSourceAction}, res) {
-        console.log(res); //contains information about request object
+      function ({ getState, dispatch, getSourceAction }, res) {
+        console.log(res); // contains information about request object
         dispatch(hideLoading());
         return res;
       }
@@ -56,11 +56,11 @@ const middlewareConfig = {
   }
 };
 
-let store = createStore(
-  rootReducer, //custom reducers
+const store = createStore(
+  rootReducer, // custom reducers
   applyMiddleware(
     thunkMiddleware,
-    axiosMiddleware(client, middlewareConfig), //second parameter options can optionally contain onSuccess, onError, onComplete, successSuffix, errorSuffix
+    axiosMiddleware(client, middlewareConfig), // second parameter options can optionally contain onSuccess, onError, onComplete, successSuffix, errorSuffix
     loadingBarMiddleware({
       promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE'],
     })

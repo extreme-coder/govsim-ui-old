@@ -2,9 +2,15 @@ import { Formik } from 'formik';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import * as Yup from 'yup';
 import * as actions from './actions/entity_actions';
 import FormWrapper from './common/FormWrapper';
 import TextField from './common/TextField';
+
+const AddRoomSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('Required'),
+});
 
 class AddRoom extends React.Component {
   constructor(props) {
@@ -38,7 +44,7 @@ class AddRoom extends React.Component {
   render() {
     return (
       <FormWrapper title="Room" isNew={this.isNew}>
-        <Formik enableReinitialize onSubmit={this.saveRoom} initialValues={this.props.room}>
+        <Formik enableReinitialize validationSchema={AddRoomSchema} onSubmit={this.saveRoom} initialValues={this.props.room}>
           {(props) => (
             <Form noValidate onSubmit={props.handleSubmit}>
               <Form.Group controlId="formBasicName">

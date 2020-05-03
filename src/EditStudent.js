@@ -2,6 +2,7 @@ import { FieldArray, Formik } from 'formik';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import * as Yup from 'yup';
 import * as actions from './actions/entity_actions';
 import DateField from './common/DateField';
 import FamilyFields from './common/FamilyFields';
@@ -10,6 +11,12 @@ import SelectField from './common/SelectField';
 import TextField from './common/TextField';
 import StudentClass from './StudentClass';
 
+const EditStudentSchema = Yup.object().shape({
+  first_name: Yup.string()
+    .required('Required'),
+  email: Yup.string()
+    .required('Required'),
+});
 
 class EditStudent extends React.Component {
   constructor(props) {
@@ -63,7 +70,7 @@ class EditStudent extends React.Component {
   render() {
     return (
       <FormWrapper title="Student" isNew={this.isNew}>
-        <Formik enableReinitialize onSubmit={this.saveStudent} initialValues={this.props.student}>
+        <Formik enableReinitialize validationSchema={EditStudentSchema} onSubmit={this.saveStudent} initialValues={this.props.student}>
           {(props) => (
             <div>
               <Form noValidate onSubmit={props.handleSubmit}>

@@ -2,10 +2,11 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
 import TextField from './common/TextField';
 import * as actions from './actions/auth';
 
-import * as Yup from 'yup';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -24,20 +25,20 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
 
-        <div class="row justify-content-center">
+        <div className="row justify-content-center">
 
-          <div class="col-xl-10 col-lg-12 col-md-9">
+          <div className="col-xl-10 col-lg-12 col-md-9">
 
-            <div class="card o-hidden border-0 shadow-lg my-5">
-              <div class="card-body p-0">
-                <div class="row">
-                  <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                  <div class="col-lg-6">
-                    <div class="p-5">
-                      <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Sign Up</h1>
+            <div className="card o-hidden border-0 shadow-lg my-5">
+              <div className="card-body p-0">
+                <div className="row">
+                  <div className="col-lg-6 d-none d-lg-block bg-login-image" />
+                  <div className="col-lg-6">
+                    <div className="p-5">
+                      <div className="text-center">
+                        <h1 className="h4 text-gray-900 mb-4">Sign Up</h1>
                       </div>
                       <div>
                         <Formik enableReinitialize validationSchema={SignupSchema} onSubmit={this.addUser} initialValues={{ email: '', password: '' }}>
@@ -51,15 +52,15 @@ class Signup extends React.Component {
 
                                 <Button variant="primary" type="submit">
                                   Sign Up
-                    </Button>
+                                </Button>
                               </Form.Group>
                             </Form>
                           )}
                         </Formik>
                       </div>
                       <hr />
-                      <div class="text-center">
-                        <a class="small" href="login">Already have an account? Login!</a>
+                      <div className="text-center">
+                        <Link className="small" to="/login">Already have an account? Login!</Link>
                       </div>
                     </div>
                   </div>
@@ -78,4 +79,3 @@ class Signup extends React.Component {
 export default Signup = connect(
   null, actions
 )(Signup);
-
