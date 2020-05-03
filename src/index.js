@@ -17,7 +17,7 @@ import * as serviceWorker from './serviceWorker';
 import App from './App';
 
 const client = axios.create({
-  baseURL: 'http://localhost:1337/',
+  baseURL: 'http://api.classikapp.com/',
   responseType: 'json'
 });
 

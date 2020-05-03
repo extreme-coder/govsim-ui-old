@@ -8,7 +8,6 @@ import TextField from './common/TextField';
 
 class SchoolSignUp extends React.Component {
   schoolSignUp = (values) => {
-    console.log(values)
     values.address.country = this.state.country
     values.address.state = this.state.region
     if (this.props.match.params.id === 'new') {
