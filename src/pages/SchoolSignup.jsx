@@ -1,9 +1,8 @@
 import React from 'react';
+import SchoolForm from '../SchoolForm';
 
-import Signup from '../Signup';
 
-
-class SignupPage extends React.Component {
+class SchoolSignup extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -12,10 +11,10 @@ class SignupPage extends React.Component {
   render() {
     return (
 
-      <Signup />
+      <SchoolForm />
 
     );
   }
 }
 
-export default SignupPage;
+export default SchoolSignup;

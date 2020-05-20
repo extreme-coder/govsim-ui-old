@@ -11,6 +11,7 @@ import EditStudent from './EditStudent';
 import Emails from './emails';
 import Families from './families';
 import DashboardRoute from './layout/DashboardRoute';
+import PublicPageRoute from './layout/PublicPageRoute';
 import Levels from './levels';
 import Login from './login';
 import Logout from './logout';
@@ -18,7 +19,8 @@ import Dashboard from './pages/DashboardHome';
 import SignupPage from './pages/SignupPage';
 import TeacherAllocations from './pages/TeacherAllocations';
 import Rooms from './Rooms';
-import SchoolSignUp from './SchoolSignUp';
+import SchoolForm from './SchoolForm';
+import SchoolSignup from './pages/SchoolSignup';
 import Students from './Students';
 import Teachers from './teachers';
 
@@ -34,7 +36,7 @@ const Routes = () => (
     </Route>
     <Route path="/logout" component={Logout} />
 
-    <Route path="/schoolsignup/:id" component={SchoolSignUp} />
+    <PublicPageRoute path="/SchoolSignup/:id" component={SchoolSignup} />
 
 
     <DashboardRoute path="/families/:id" component={AddFamily} />
@@ -57,8 +59,8 @@ const Routes = () => (
     <DashboardRoute path="/students/new" component={EditStudent} />
     <DashboardRoute path="/students" component={Students} />
 
-    <DashboardRoute path="/schools/:id" component={SchoolSignUp} />
-    <DashboardRoute path="/schools/new" component={SchoolSignUp} />
+    <DashboardRoute path="/schools/:id" component={SchoolForm} />
+    <DashboardRoute path="/schools/new" component={SchoolForm} />
 
     <DashboardRoute path="/classes/:id" component={AddClass} />
     <DashboardRoute path="/classes/new" component={AddClass} />
