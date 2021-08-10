@@ -15,7 +15,12 @@ const initialState = {
   teacher: {},
   school: {},
   levels: [],
-  level: {}
+  level: {},
+  countries: [],
+  country: {},
+  parties: [],
+  party_templates: [],
+  bills: [],
 }
 const entities = (state = initialState, action) => {
   let name = ''

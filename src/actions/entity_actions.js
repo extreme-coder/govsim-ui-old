@@ -8,6 +8,13 @@ export const getEntities = createAction('LOAD_ENTITIES', (name) => ({
   }
 }));
 
+export const getEntitiesByField = createAction('LOAD_ENTITIES', (name, fieldName, fieldVal) => ({
+  request: {
+    url: `/${pluralize(name.replace('_', '-'))}?${fieldName}=${fieldVal}`,
+    modelName: name
+  }
+}));
+
 export const getEntity = createAction('LOAD_ENTITY', (name, id) => ({
   request: {
     url: `/${pluralize(name.replace('_', '-'))}/${id}`,

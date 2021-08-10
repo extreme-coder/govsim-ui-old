@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect, NavLink } from 'react-router-dom';
 import AddClass from './AddClass';
 import AddFamily from './addFamily';
 import AddLevel from './AddLevel';
@@ -23,6 +23,8 @@ import SchoolForm from './SchoolForm';
 import SchoolSignup from './pages/SchoolSignup';
 import Students from './Students';
 import Teachers from './teachers';
+import Countries from './pages/Countries';
+import CountryViewer from './pages/CountryViewer';
 
 
 const Routes = () => (
@@ -34,10 +36,17 @@ const Routes = () => (
     <Route path="/login">
       <Login />
     </Route>
+    <Route path="/countries/:id" component={CountryViewer} />
+
+    <Route path="/users/:id/countries" component={Countries} />
+
+    <Route path="/countries">
+      <Countries />
+    </Route>
+
     <Route path="/logout" component={Logout} />
 
     <PublicPageRoute path="/SchoolSignup/:id" component={SchoolSignup} />
-
 
     <DashboardRoute path="/families/:id" component={AddFamily} />
     <DashboardRoute path="/families/new" component={AddFamily} />
