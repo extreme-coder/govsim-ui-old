@@ -22,7 +22,7 @@ const client = axios.create({
 });
 
 function errorHandler({ getState, dispatch, error }) {
-  // debugger;
+  debugger;
   if (error.response.status === 401) {
     // auto logout if 401 response returned from api
     dispatch(actions.logout());

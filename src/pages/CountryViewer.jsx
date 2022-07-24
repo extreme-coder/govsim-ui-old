@@ -7,35 +7,41 @@ import { VictoryPie, VictoryLabel, VictoryBar, VictoryChart, VictoryTheme, Victo
 import * as actions from '../actions/entity_actions';
 import * as countryImage from './united-states-map.jpg'
 
+const loaded = false
+
 class CountryViewer extends React.Component {
   componentDidMount() {
     this.props.getEntity('country', this.props.match.params.id);
-    debugger;
     this.props.getEntitiesByField('party', 'country', this.props.country.id);
-    this.props.getEntities('party_template')
-    this.props.getEntitiesByField('bill', 'country', this.props.match.params.id);
+    this.props.getEntities('party-template')
+    this.props.getEntitiesByField('promise', 'country', this.props.match.params.id);
+  }
+
+  loadColors(p) {
+    if (this.props.promises.length > 0) {
+      const id = p.party.template
+      console.log(id)
+      console.log(this.props['party-templates'].filter((t) => (t.id === id))[0].color)
+      return this.props['party-templates'].filter((t) => (t.id === id))[0].color
+    }
+    return '#878684'
   }
 
   render() {
-    debugger;
     return (
-      <div className="main" style={{ backgroundColor: 'black' }}>
-        <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
-          <Row>
-            <Col />
-          </Row>
-          <Row>
+      <div className="main" style={{ backgroundColor: 'black', height: '100vh' }}>
+        <Container fluid style={{ paddingLeft: 0, paddingRight: 0, height: '100vh' }}>
+          <Row className="height: 10vh">
             <Col>
-              <h1>{this.props.country.name}</h1>
+              {/* <h1>{this.props.country.name}</h1> */}
+              <h1>country name</h1>
             </Col>
           </Row>
-          <Row>
-            {this.props.parties.map((party) => (<Col xs={4 * party.seats}><div style={{ backgroundColor: party.template.color }}>{party.name}</div></Col>))}
+          <Row className="height: 5vh">
+            party stuff
+            {/* this.props.parties.map((party) => (<Col xs={4 * party.seats}><div style={{ backgroundColor: party.template.color }}>{party.name}</div></Col>)) */}
           </Row>
-          <Row>
-            <Col />
-          </Row>
-          <Row className="h-100">
+          <Row className="height: 65vh">
             <Col xs={3}>
               <h4>Recent Headlines:</h4>
             </Col>
@@ -46,17 +52,16 @@ class CountryViewer extends React.Component {
               something
             </Col>
           </Row>
-          <Row>
-            <Col style={{ textAlign: 'center' }} xs={3}>
-              <svg width="100%" height="100%" viewBox="0 0 400 400" textAlign="center">
+          <Row className="height: 20vh" id="chartrow">
+            <div style={{ textAlign: 'center', width: '20vw' }}>
+              <svg width="auto" height="100%" viewBox="0 0 400 400" textAlign="center">
                 <VictoryPie
                   standalone={false}
-                  width={400}
-                  height={400}
+
                   data={[
                     { x: 1, y: 120 }, { x: 2, y: 150 }, { x: 3, y: 75 }
                   ]}
-                  innerRadius={75}
+                  innerRadius={0}
                   labelRadius={100}
                   style={{ labels: { fontSize: 20, fill: 'white' } }}
                 />
@@ -68,34 +73,16 @@ class CountryViewer extends React.Component {
                   text="Demographics"
                 />
               </svg>
-            </Col>
-            <Col xs={6}>
-              <VictoryChart
-                height={200}
-                width={600}
-                theme={VictoryTheme.grayscale}
-                domainPadding={{ x: 45 }}
-              >
-                <VictoryBar
-                  barRatio={1}
-                  style={{ data: { fill: '#c43a31' } }}
-                  data={[
-                    { x: 'GDP', y: 100 },
-                    { x: 'Employment', y: 50 },
-                    { x: 'Inequality', y: 70 },
-                    { x: 'Approval Rating', y: 70 },
-                  ]}
-                />
-
-                <VictoryAxis style={{}} />
-              </VictoryChart>
-            </Col>
-            <Col xs={3}>
+            </div>
+            <div style={{ width: '65vw' }} />
+            <div style={{ width: '25vw' }}>
               <Container fluid>
                 <h5>Bills:</h5>
-                {this.props.bills.filter((bill) => (!bill.is_passed)).map((bill) => (<Row><button type="button" className="btn btn-block" style={{ backgroundColor: this.props.party_templates[bill.sponsors[0].template], color: 'white' }}>{bill.name}</button></Row>))}
+                {
+                  this.props.promises.map((p) => (<Row><button type="button" className="btn btn-block" style={{ backgroundColor: this.loadColors(p), color: 'white' }}>{p.law.name}</button></Row>))
+                }
               </Container>
-            </Col>
+            </div>
           </Row>
         </Container>
       </div>

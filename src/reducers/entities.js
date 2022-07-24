@@ -1,26 +1,11 @@
 import pluralize from 'pluralize';
 
 const initialState = {
-  rooms: [],
-  room: {},
-  students: [],
-  student: {},
-  families: [],
-  family: {},
-  classes: [],
-  class: {},
-  email_messages: [],
-  email_message: {},
-  teachers: [],
-  teacher: {},
-  school: {},
-  levels: [],
-  level: {},
   countries: [],
   country: {},
   parties: [],
   party_templates: [],
-  bills: [],
+  promises: [],
 }
 const entities = (state = initialState, action) => {
   let name = ''
