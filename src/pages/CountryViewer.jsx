@@ -4,8 +4,10 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import '../styles/country-viewer.css'
 import * as V from 'victory';
 import { VictoryPie, VictoryLabel, VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from 'victory';
+import Popup from 'reactjs-popup';
 import * as actions from '../actions/entity_actions';
 import * as countryImage from './united-states-map.jpg'
+import 'reactjs-popup/dist/index.css';
 
 const loaded = false
 
@@ -79,7 +81,49 @@ class CountryViewer extends React.Component {
               <Container fluid>
                 <h5>Bills:</h5>
                 {
-                  this.props.promises.map((p) => (<Row><button type="button" className="btn btn-block" style={{ backgroundColor: this.loadColors(p), color: 'white' }}>{p.law.name}</button></Row>))
+                  this.props.promises.map((p) => (
+                    <Row>
+                      <Popup trigger={<button type="button" className="btn btn-block" style={{ backgroundColor: this.loadColors(p), color: 'white' }}>{p.law.name}</button>} position="right center" modal nested>
+                        {(close) => (
+                          <div className="billmenu">
+                            <button className="close" onClick={close}>
+                              &times;
+                            </button>
+                            <div className="header">
+                              {' '}
+                              {p.law.name}
+                              {' '}
+                            </div>
+                            <div className="content">
+                              {' '}
+                              Introduced by:
+                              {' '}
+                              {p.party.name}
+                            </div>
+                            <div className="actions">
+                              <Popup
+                                trigger={<button className="button"> Call Vote </button>}
+                                position="top center"
+                                nested
+                              >
+                                <span>
+                                  vote called
+                                </span>
+                              </Popup>
+                              <button
+                                className="button"
+                                onClick={() => {
+                                  close();
+                                }}
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </Popup>
+                    </Row>
+                  ))
                 }
               </Container>
             </div>
