@@ -85,7 +85,7 @@ class CountryViewer extends React.Component {
                     <Row>
                       <Popup trigger={<button type="button" className="btn btn-block" style={{ backgroundColor: this.loadColors(p), color: 'white' }}>{p.law.name}</button>} position="right center" modal nested>
                         {(close) => (
-                          <div className="billmenu">
+                          <div className="cvpopup">
                             <button className="close" onClick={close}>
                               &times;
                             </button>

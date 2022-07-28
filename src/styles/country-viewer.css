@@ -4,9 +4,9 @@
     padding-right: 0
 }
 
-.billmenu { font-size: 12px;}
+.cvpopup { font-size: 12px;}
 
-.billmenu > .header { 
+.cvpopup > .header { 
     width: 100%; 
     border-bottom: 1px solid gray; 
     font-size: 18px; 
@@ -14,19 +14,19 @@
     padding: 5px;
 }
 
-.billmenu > .content { 
+.cvpopup > .content { 
     width: 100%; 
     padding: 10px 5px;
 }
 
-.billmenu > .actions { 
+.cvpopup > .actions { 
     width: 100%; 
     padding: 10px 5px; 
     margin: auto; 
     text-align: center;
 }
 
-.billmenu > .close { 
+.cvpopup > .close { 
     cursor: pointer; 
     position: absolute; 
     display: block; 
