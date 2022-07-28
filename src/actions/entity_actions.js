@@ -34,7 +34,7 @@ export const addEntity = createAction('ADD_ENTITY', (name, data, next) => ({
       if (next) {
         window.location = next;
       } else {
-        window.location = `/${pluralize(name)}`;
+        // window.location = `/${pluralize(name)}`;
       }
     }
   }

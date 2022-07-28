@@ -101,15 +101,15 @@ class CountryViewer extends React.Component {
                               {p.party.name}
                             </div>
                             <div className="actions">
-                              <Popup
-                                trigger={<button className="button"> Call Vote </button>}
-                                position="top center"
-                                nested
+                              <button
+                                className="button"
+                                onClick={() => {
+                                  this.props.addEntity('vote', { country: this.props.country.id, datetime: new Date(), promise: p });
+                                  close();
+                                }}
                               >
-                                <span>
-                                  vote called
-                                </span>
-                              </Popup>
+                                Call Vote
+                              </button>
                               <button
                                 className="button"
                                 onClick={() => {
