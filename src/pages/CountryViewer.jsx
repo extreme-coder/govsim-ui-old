@@ -5,11 +5,13 @@ import '../styles/country-viewer.css'
 import * as V from 'victory';
 import { VictoryPie, VictoryLabel, VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from 'victory';
 import Popup from 'reactjs-popup';
+import { io } from 'socket.io-client'
 import * as actions from '../actions/entity_actions';
 import * as countryImage from './united-states-map.jpg'
 import 'reactjs-popup/dist/index.css';
 
-const loaded = false
+let socket;
+let socketLoaded = false;
 
 class CountryViewer extends React.Component {
   componentDidMount() {
@@ -22,14 +24,20 @@ class CountryViewer extends React.Component {
   loadColors(p) {
     if (this.props.promises.length > 0) {
       const id = p.party.template
-      console.log(id)
-      console.log(this.props['party-templates'].filter((t) => (t.id === id))[0].color)
+      socket = io('http://localhost:1337')
+      socket.emit('joinGame', this.props.country.id)
+      socketLoaded = true
       return this.props['party-templates'].filter((t) => (t.id === id))[0].color
     }
     return '#878684'
   }
 
   render() {
+    if (socketLoaded) {
+      socket.on('newVote', (data) => {
+        console.log(data)
+      });
+    }
     return (
       <div className="main" style={{ backgroundColor: 'black', height: '100vh' }}>
         <Container fluid style={{ paddingLeft: 0, paddingRight: 0, height: '100vh' }}>

@@ -6,6 +6,7 @@ const initialState = {
   parties: [],
   party_templates: [],
   promises: [],
+  votes: [],
 }
 const entities = (state = initialState, action) => {
   let name = ''
