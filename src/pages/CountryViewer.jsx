@@ -14,6 +14,18 @@ let socket;
 let socketLoaded = false;
 
 class CountryViewer extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      voting: false,
+      v: {},
+      upForVote: {
+        law: { name: '' },
+        party: { name: '' }
+      }
+    }
+  }
+
   componentDidMount() {
     this.props.getEntity('country', this.props.match.params.id);
     this.props.getEntitiesByField('party', 'country', this.props.country.id);
@@ -36,6 +48,10 @@ class CountryViewer extends React.Component {
     if (socketLoaded) {
       socket.on('newVote', (data) => {
         console.log(data)
+        debugger;
+        this.setState({ v: data })
+        this.setState({ upForVote: data.promise })
+        this.setState({ voting: true })
       });
     }
     return (
@@ -125,6 +141,47 @@ class CountryViewer extends React.Component {
                                 }}
                               >
                                 Close
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </Popup>
+                      <Popup open={this.state.voting} onClose={() => { this.setState({ voting: false }) }} position="right center" modal nested>
+                        {(close) => (
+                          <div className="cvpopup">
+                            <button className="close" onClick={close}>
+                              &times;
+                            </button>
+                            <div className="header">
+                              {' '}
+                              Voting begins for
+                              {' '}
+                              {this.state.upForVote.law}
+                            </div>
+                            <div className="content">
+                              {' '}
+                              Introduced by
+                              {' '}
+                              {this.state.upForVote.party}
+                            </div>
+                            <div className="actions">
+                              <button
+                                className="button"
+                                onClick={() => {
+                                  this.props.addEntity('ballot', { for: true, vote: this.state.v.id, country: this.props.country.id });
+                                  close();
+                                }}
+                              >
+                                Yay
+                              </button>
+                              <button
+                                className="button"
+                                onClick={() => {
+                                  this.props.addEntity('ballot', { for: false, vote: this.state.v.id, country: this.props.country.id });
+                                  close();
+                                }}
+                              >
+                                Nay
                               </button>
                             </div>
                           </div>
