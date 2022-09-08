@@ -22,7 +22,7 @@ class Countries extends React.Component {
 
   componentDidMount() {
     debugger;
-    this.props.getEntitiesByField('country', 'admin', this.props.match.params.id);
+    this.props.getEntities('country');
   }
 
   gameStartPopup(ctx) {
@@ -46,7 +46,7 @@ class Countries extends React.Component {
                     <button onClick={this.gameStartPopup} countryId={country.id} countryName={country.name}>
                       <img src={`http://localhost:1337${country.country_template.map.url}`} alt="image" />
                     </button>
-                    <h1>test</h1>
+                    <h1>{country.name}</h1>
                   </div>
                 ))
             }
