@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom'
-import Header from './Header'
 import Sidebar from './Sidebar'
 
 class DashboardLayout extends React.Component {
@@ -34,7 +33,6 @@ class DashboardLayout extends React.Component {
         <Sidebar />
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
-            <Header />
             <div className="container-fluid">
               { this.props.children }
             </div>

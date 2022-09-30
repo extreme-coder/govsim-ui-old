@@ -32,6 +32,7 @@ const SelectField = ({ ...props }) => {
           value={selected}
           onChange={(val) => {
             setFieldValue(field.name, val.value);
+            if (props.onChange) props.onChange(field.name, val.value)
           }}
         />
       </InputGroup>

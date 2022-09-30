@@ -4,11 +4,11 @@ import DashboardRoute from './layout/DashboardRoute';
 import PublicPageRoute from './layout/PublicPageRoute';
 import Login from './login';
 import Logout from './logout';
-import Dashboard from './pages/DashboardHome';
 import SignupPage from './pages/SignupPage';
 import SchoolSignup from './pages/SchoolSignup';
 import Countries from './pages/Countries';
 import CountryViewer from './pages/CountryViewer';
+import Main from './pages/Main';
 
 
 const Routes = () => (
@@ -32,7 +32,7 @@ const Routes = () => (
 
     <PublicPageRoute path="/SchoolSignup/:id" component={SchoolSignup} />
 
-    <DashboardRoute path="/dashboard" component={Dashboard} />
+    <DashboardRoute path="/dashboard" component={Main} />
 
   </Switch>
 

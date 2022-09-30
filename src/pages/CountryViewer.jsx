@@ -9,6 +9,8 @@ import { io } from 'socket.io-client'
 import * as actions from '../actions/entity_actions';
 import * as countryImage from './united-states-map.jpg'
 import 'reactjs-popup/dist/index.css';
+import FocusViewer from '../common/FocusViewer'
+import BillCreator from '../common/BillCreator'
 
 let socket;
 let socketLoaded = false;
@@ -75,7 +77,7 @@ class CountryViewer extends React.Component {
               <img src={countryImage} width={window.innerWidth * 0.5} />
             </Col>
             <Col xs={3}>
-              something
+              <FocusViewer name="test" />
             </Col>
           </Row>
           <Row className="height: 20vh" id="chartrow">

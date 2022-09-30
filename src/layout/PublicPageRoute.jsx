@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom'
-import Header from './Header'
 import Sidebar from './Sidebar'
 
 class PublicPageLayout extends React.Component {
